@@ -1,0 +1,33 @@
+These two commands were approved for execution outside the restricted sandbox.
+
+$ /home/js12359/hwdesign-work/.venv/bin/python -B -c "import sys; import waveflow; print(sys.executable); print(waveflow.__file__)"
+/home/js12359/hwdesign-work/.venv/bin/python
+/home/js12359/waveflow/waveflow/__init__.py
+exit_status: 0
+
+$ git --no-optional-locks -C /home/js12359/hwdesign-work status --short --branch
+## main...origin/main
+?? cmdresp/takehome/.vscode/
+?? cmdresp/takehome/.waveflow/
+exit_status: 0
+
+$ git --no-optional-locks -C /home/js12359/hwdesign-work log -1 --format=fuller -- cmdresp/takehome/prompt.md
+commit e07d94b069719939eaa5ea4b364461b8fec6f941
+Author:     js12359 <js12359@ecs03.poly.edu>
+AuthorDate: Wed Nov 4 21:09:37 2026 -0500
+Commit:     js12359 <js12359@ecs03.poly.edu>
+CommitDate: Wed Nov 4 21:09:37 2026 -0500
+
+    Add graded Lab 5 Part 3 specification
+exit_status: 0
+
+$ git --no-optional-locks -C /home/js12359/hwdesign-work ls-remote origin refs/heads/main
+e07d94b069719939eaa5ea4b364461b8fec6f941	refs/heads/main
+exit_status: 0
+
+$ git --no-optional-locks -C /home/js12359/hwdesign-work diff HEAD -- cmdresp/takehome/prompt.md
+(no output)
+exit_status: 0
+
+No repository commits, pushes, specification edits, package installs, or sandbox
+configuration changes were performed by these diagnostics.

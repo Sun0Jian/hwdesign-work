@@ -1,0 +1,41 @@
+#-----------------------------------------------------------
+# xsim v2026.1 (64-bit)
+# SW Build 6511674 on Tue Jun 16 11:01:26 MDT 2026
+# IP Build 6504888 on Tue Jun 09 09:05:25 MDT 2026
+# SharedData Build 6501428 on Mon Jun 08 17:34:18 MDT 2026
+# Start of session at: Wed Nov  4 21:45:30 2026
+# Process ID         : 3351720
+# Current directory  : /home/js12359/hwdesign-work/cmdresp/takehome/maxpool_prj/solution1/sim/verilog
+# Command line       : xsim -mode tcl -source {xsim.dir/maxpool/xsim_script.tcl}
+# Log file           : /home/js12359/hwdesign-work/cmdresp/takehome/maxpool_prj/solution1/sim/verilog/xsim.log
+# Journal file       : /home/js12359/hwdesign-work/cmdresp/takehome/maxpool_prj/solution1/sim/verilog/xsim.jou
+# Running On         : ecs03.poly.edu
+# Platform           : rhel
+# Operating System   : Red Hat Enterprise Linux 9.8 (Plow)
+# Processor Detail   : Intel(R) Xeon(R) Gold 6338N CPU @ 2.20GHz
+# CPU Frequency      : 2700.000 MHz
+# CPU Physical cores : 64
+# CPU Logical cores  : 64
+# Host memory        : 1064171 MB
+# Swap memory        : 274877 MB
+# Total Virtual      : 1339049 MB
+# Available Virtual  : 1214840 MB
+#-----------------------------------------------------------
+source xsim.dir/maxpool/xsim_script.tcl
+# xsim {maxpool} -testplusarg UVM_VERBOSITY=UVM_NONE -testplusarg UVM_TESTNAME=maxpool_test_lib -testplusarg UVM_TIMEOUT=20000000000000 -view {{maxpool_dataflow_ana.wcfg}} -tclbatch {maxpool_vcd.tcl} -protoinst {maxpool.protoinst}
+INFO: [Wavedata 42-565] Reading protoinst file maxpool.protoinst
+INFO: [Wavedata 42-564]   Found protocol instance at /apatb_maxpool_top/AESL_inst_maxpool//AESL_inst_maxpool_activity
+INFO: [Wavedata 42-564]   Found protocol instance at /apatb_maxpool_top/AESL_inst_maxpool/grp_maxpool_Pipeline_buffer_image_fu_425/grp_maxpool_Pipeline_buffer_image_fu_425_activity
+INFO: [Wavedata 42-564]   Found protocol instance at /apatb_maxpool_top/AESL_inst_maxpool/grp_maxpool_Pipeline_emit_windows_fu_456/grp_maxpool_Pipeline_emit_windows_fu_456_activity
+INFO: [Wavedata 42-564]   Found protocol instance at /apatb_maxpool_top/AESL_inst_maxpool/grp_maxpool_Pipeline_read_header_fu_399/grp_maxpool_Pipeline_read_header_fu_399_activity
+Time resolution is 1 ps
+open_wave_config maxpool_dataflow_ana.wcfg
+source maxpool_vcd.tcl
+## open_vcd
+## log_vcd /apatb_maxpool_top/AESL_inst_maxpool/*
+ERROR: unexpected exception when evaluating tcl command
+    while executing
+"log_vcd /apatb_maxpool_top/AESL_inst_maxpool/*"
+    (file "maxpool_vcd.tcl" line 3)
+INFO: xsimkernel Simulation Memory Usage: 542504 KB (Peak: 596384 KB), Simulation CPU Usage: 1970 ms
+INFO: [Common 17-206] Exiting xsim at Wed Nov  4 21:45:34 2026...

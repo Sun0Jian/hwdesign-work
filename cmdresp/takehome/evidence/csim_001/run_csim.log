@@ -1,0 +1,14 @@
+Evidence directory: /home/js12359/hwdesign-work/cmdresp/takehome/evidence/csim_001
+Traceback (most recent call last):
+  File "/home/js12359/hwdesign-work/cmdresp/takehome/maxpool_build.py", line 230, in main
+    run_stage(args.stage, attempt)
+  File "/home/js12359/hwdesign-work/cmdresp/takehome/maxpool_build.py", line 155, in run_stage
+    result = toolchain.run_vitis_hls(
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/js12359/waveflow/waveflow/toolchain/toolchain.py", line 506, in run_vitis_hls
+    cmd_list, default_work_dir = _build_vitis_hls_cmd(tcl_script=tcl_script, args=args)
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/js12359/waveflow/waveflow/toolchain/toolchain.py", line 438, in _build_vitis_hls_cmd
+    raise RuntimeError(
+RuntimeError: Vitis installation not found. Please set WAVEFLOW_VITIS_PATH (run `test_amd_tools` to diagnose).
+Build runner exit status: 1

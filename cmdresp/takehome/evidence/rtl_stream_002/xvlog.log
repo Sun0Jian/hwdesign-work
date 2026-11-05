@@ -1,0 +1,24 @@
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/js12359/hwdesign-work/cmdresp/takehome/evidence/rtl_stream_002/sources/maxpool_prj/solution1/syn/verilog/maxpool.v" into library work
+INFO: [VRFC 10-311] analyzing module maxpool
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/js12359/hwdesign-work/cmdresp/takehome/evidence/rtl_stream_002/sources/maxpool_prj/solution1/syn/verilog/maxpool_control_s_axi.v" into library work
+INFO: [VRFC 10-311] analyzing module maxpool_control_s_axi
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/js12359/hwdesign-work/cmdresp/takehome/evidence/rtl_stream_002/sources/maxpool_prj/solution1/syn/verilog/maxpool_flow_control_loop_pipe_sequential_init.v" into library work
+INFO: [VRFC 10-311] analyzing module maxpool_flow_control_loop_pipe_sequential_init
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/js12359/hwdesign-work/cmdresp/takehome/evidence/rtl_stream_002/sources/maxpool_prj/solution1/syn/verilog/maxpool_image_RAM_AUTO_1R1W.v" into library work
+INFO: [VRFC 10-311] analyzing module maxpool_image_RAM_AUTO_1R1W
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/js12359/hwdesign-work/cmdresp/takehome/evidence/rtl_stream_002/sources/maxpool_prj/solution1/syn/verilog/maxpool_maxpool_Pipeline_buffer_image.v" into library work
+INFO: [VRFC 10-311] analyzing module maxpool_maxpool_Pipeline_buffer_image
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/js12359/hwdesign-work/cmdresp/takehome/evidence/rtl_stream_002/sources/maxpool_prj/solution1/syn/verilog/maxpool_maxpool_Pipeline_emit_windows.v" into library work
+INFO: [VRFC 10-311] analyzing module maxpool_maxpool_Pipeline_emit_windows
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/js12359/hwdesign-work/cmdresp/takehome/evidence/rtl_stream_002/sources/maxpool_prj/solution1/syn/verilog/maxpool_maxpool_Pipeline_read_header.v" into library work
+INFO: [VRFC 10-311] analyzing module maxpool_maxpool_Pipeline_read_header
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/js12359/hwdesign-work/cmdresp/takehome/evidence/rtl_stream_002/sources/maxpool_prj/solution1/syn/verilog/maxpool_mul_15ns_15ns_30_1_1.v" into library work
+INFO: [VRFC 10-311] analyzing module maxpool_mul_15ns_15ns_30_1_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/js12359/hwdesign-work/cmdresp/takehome/evidence/rtl_stream_002/sources/maxpool_prj/solution1/syn/verilog/maxpool_mul_16ns_16ns_32_1_1.v" into library work
+INFO: [VRFC 10-311] analyzing module maxpool_mul_16ns_16ns_32_1_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/js12359/hwdesign-work/cmdresp/takehome/evidence/rtl_stream_002/sources/maxpool_prj/solution1/syn/verilog/maxpool_regslice_both.v" into library work
+INFO: [VRFC 10-311] analyzing module maxpool_regslice_both
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/js12359/hwdesign-work/cmdresp/takehome/evidence/rtl_stream_002/sources/maxpool_prj/solution1/syn/verilog/maxpool_sparsemux_9_2_16_1_1.v" into library work
+INFO: [VRFC 10-311] analyzing module maxpool_sparsemux_9_2_16_1_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/js12359/hwdesign-work/cmdresp/takehome/evidence/rtl_stream_002/sources/rtl_stream_tb.sv" into library work
+INFO: [VRFC 10-311] analyzing module rtl_stream_tb

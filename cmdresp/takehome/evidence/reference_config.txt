@@ -1,0 +1,21 @@
+Required reference inspected on the host:
+/home/js12359/waveflow/examples/stream_inband/run.tcl
+
+FPGA configuration in that reference:
+set_part {xc7z020clg484-1}
+set clk_period_ns 10
+create_clock -period $clk_period_ns
+
+The reference permits WAVEFLOW_POLY_CLK_PERIOD_NS to override its default;
+this project uses the reference's 10 ns default without overriding it.
+
+Structural reference:
+/home/js12359/waveflow/examples/stream_inband/poly.py
+/home/js12359/waveflow/examples/stream_inband/poly_build.py
+/home/js12359/waveflow/examples/stream_inband/poly_body_impl.tpp
+
+The project follows the HostActivated body-only kernel pattern, generated
+Waveflow AXI stream and AXI-Lite interface, handwritten C++ body, and pure
+bit-exact Python model with independently generated expected responses.
+Unlike the polynomial reference, max-pool must validate and buffer an entire
+image before emitting a response. No reference timing model is used.

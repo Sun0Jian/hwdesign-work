@@ -1,0 +1,9 @@
+{
+  "started_utc": "2026-11-05T02:46:42.343389+00:00",
+  "purpose": "VCD replay of unchanged cosim_001 all-99-activation snapshot",
+  "original_report": "evidence/cosim_001/hls/sim/report/verilog/result.transaction.rpt",
+  "vcd": "evidence/trace_002/cosim.vcd",
+  "sha256": "b4f8a4493ddfe34536f96d9000048a8958eb3488d935a4df4935057340c1f833",
+  "finished_utc": "2026-11-05T02:46:57.831974+00:00",
+  "exit_status": 0
+}

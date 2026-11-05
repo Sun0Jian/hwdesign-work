@@ -1,0 +1,76 @@
+{
+  "started_utc": "2026-11-05T02:55:14.902762+00:00",
+  "method": "supplementary synthesized RTL simulation of every full input queue",
+  "python": "/home/js12359/hwdesign-work/.venv/bin/python",
+  "clock_ns": 10,
+  "commands": [
+    {
+      "argv": [
+        "/eda/xilinx/2026.1/Vivado/bin/xvlog",
+        "--sv",
+        "--work",
+        "work",
+        "/home/js12359/hwdesign-work/cmdresp/takehome/evidence/rtl_stream_002/sources/maxpool_prj/solution1/syn/verilog/maxpool.v",
+        "/home/js12359/hwdesign-work/cmdresp/takehome/evidence/rtl_stream_002/sources/maxpool_prj/solution1/syn/verilog/maxpool_control_s_axi.v",
+        "/home/js12359/hwdesign-work/cmdresp/takehome/evidence/rtl_stream_002/sources/maxpool_prj/solution1/syn/verilog/maxpool_flow_control_loop_pipe_sequential_init.v",
+        "/home/js12359/hwdesign-work/cmdresp/takehome/evidence/rtl_stream_002/sources/maxpool_prj/solution1/syn/verilog/maxpool_image_RAM_AUTO_1R1W.v",
+        "/home/js12359/hwdesign-work/cmdresp/takehome/evidence/rtl_stream_002/sources/maxpool_prj/solution1/syn/verilog/maxpool_maxpool_Pipeline_buffer_image.v",
+        "/home/js12359/hwdesign-work/cmdresp/takehome/evidence/rtl_stream_002/sources/maxpool_prj/solution1/syn/verilog/maxpool_maxpool_Pipeline_emit_windows.v",
+        "/home/js12359/hwdesign-work/cmdresp/takehome/evidence/rtl_stream_002/sources/maxpool_prj/solution1/syn/verilog/maxpool_maxpool_Pipeline_read_header.v",
+        "/home/js12359/hwdesign-work/cmdresp/takehome/evidence/rtl_stream_002/sources/maxpool_prj/solution1/syn/verilog/maxpool_mul_15ns_15ns_30_1_1.v",
+        "/home/js12359/hwdesign-work/cmdresp/takehome/evidence/rtl_stream_002/sources/maxpool_prj/solution1/syn/verilog/maxpool_mul_16ns_16ns_32_1_1.v",
+        "/home/js12359/hwdesign-work/cmdresp/takehome/evidence/rtl_stream_002/sources/maxpool_prj/solution1/syn/verilog/maxpool_regslice_both.v",
+        "/home/js12359/hwdesign-work/cmdresp/takehome/evidence/rtl_stream_002/sources/maxpool_prj/solution1/syn/verilog/maxpool_sparsemux_9_2_16_1_1.v",
+        "/home/js12359/hwdesign-work/cmdresp/takehome/evidence/rtl_stream_002/sources/rtl_stream_tb.sv"
+      ],
+      "exit_status": 0
+    },
+    {
+      "argv": [
+        "/eda/xilinx/2026.1/Vivado/bin/xelab",
+        "work.rtl_stream_tb",
+        "--debug",
+        "typical",
+        "--snapshot",
+        "maxpool_stream_sim"
+      ],
+      "exit_status": 0
+    },
+    {
+      "argv": [
+        "/eda/xilinx/2026.1/Vivado/bin/xsim",
+        "maxpool_stream_sim",
+        "--runall",
+        "--testplusarg",
+        "SCENARIOS=/home/js12359/hwdesign-work/cmdresp/takehome/evidence/rtl_stream_002/sources/data/scenarios.txt",
+        "--testplusarg",
+        "RESULT=/home/js12359/hwdesign-work/cmdresp/takehome/evidence/rtl_stream_002/rtl_checks.json"
+      ],
+      "exit_status": 0
+    }
+  ],
+  "source_sha256": {
+    "rtl_stream_tb.sv": "6010f05f7522710c0a34be07981bc69972c7b300c02ac93821d978961449def3",
+    "verify_rtl_stream.py": "8c0b83832dd865dde34e6e65dd8f18fe67cfc1ddfea36b0788722233125e1ada",
+    "data/scenarios.txt": "6dc42d9fb967056c6e9d8c879a8361206da0197760c6c4cbb6064baf03ba1331",
+    "data/scenarios.json": "a21834f0a645ddd7975655b039ac45312bf01e4ffb4eb80aa471d3052e77019d",
+    "maxpool_prj/solution1/syn/verilog/maxpool.v": "8fe304578dbaeec232a619fa0c0ab82165b42c2ecb3e2c4ef097d2f6e44ba9db",
+    "maxpool_prj/solution1/syn/verilog/maxpool_control_s_axi.v": "1603212e2a9ad1d454975dbb7d732541108cbf52fdaebcfa9af622c30cdcb102",
+    "maxpool_prj/solution1/syn/verilog/maxpool_flow_control_loop_pipe_sequential_init.v": "5ce9f8be56fbf92c30e224905def7c796aad73d70b10d5090ca0e9b3430b5c10",
+    "maxpool_prj/solution1/syn/verilog/maxpool_image_RAM_AUTO_1R1W.v": "744d78f62dcb0d384e364937ee04d0932ec63409baa69a24d5623bd8aa9331b1",
+    "maxpool_prj/solution1/syn/verilog/maxpool_maxpool_Pipeline_buffer_image.v": "87e8f3b6068fb7f51c48b8c79664b9098dd6a57435041a1d411a31c8e6025f96",
+    "maxpool_prj/solution1/syn/verilog/maxpool_maxpool_Pipeline_emit_windows.v": "3628e3274d13176f2311c39f8db51320ab2ab81096c6d20dc6ba68e7617c8f59",
+    "maxpool_prj/solution1/syn/verilog/maxpool_maxpool_Pipeline_read_header.v": "2ea37994e8f670db6a4870279477f2bad4b56f6ec24575ddd2ab629e36e995eb",
+    "maxpool_prj/solution1/syn/verilog/maxpool_mul_15ns_15ns_30_1_1.v": "7dd4c6e50ab44fc0bf71d5d3cd4c50e76ba7455f8a96b1c228fd06fe11c4aead",
+    "maxpool_prj/solution1/syn/verilog/maxpool_mul_16ns_16ns_32_1_1.v": "453dac556b948099e73095feeba4061b2bed22c0f9f151b8f3db2c4842e2f261",
+    "maxpool_prj/solution1/syn/verilog/maxpool_regslice_both.v": "a1884b826ddcc6de73c4aa02ba1176be02fc0c5b0c32fa990e64676b10909d67",
+    "maxpool_prj/solution1/syn/verilog/maxpool_sparsemux_9_2_16_1_1.v": "770a3aa516241a6f183ad52d4705cee7b4c37439e73b412ef62fb93a2210adf1"
+  },
+  "tools": {
+    "xvlog": "/eda/xilinx/2026.1/Vivado/bin/xvlog",
+    "xelab": "/eda/xilinx/2026.1/Vivado/bin/xelab",
+    "xsim": "/eda/xilinx/2026.1/Vivado/bin/xsim"
+  },
+  "finished_utc": "2026-11-05T02:55:31.548119+00:00",
+  "exit_status": 1
+}

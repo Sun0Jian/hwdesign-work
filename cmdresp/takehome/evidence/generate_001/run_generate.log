@@ -1,0 +1,11 @@
+Evidence directory: /home/js12359/hwdesign-work/cmdresp/takehome/evidence/generate_001
+Traceback (most recent call last):
+  File "/home/js12359/hwdesign-work/cmdresp/takehome/maxpool_build.py", line 206, in main
+    generate()
+  File "/home/js12359/hwdesign-work/cmdresp/takehome/maxpool_build.py", line 100, in generate
+    require_success(helpers.run(config), "Waveflow stream helpers")
+  File "/home/js12359/hwdesign-work/cmdresp/takehome/maxpool_build.py", line 92, in require_success
+    if not result.success:
+           ^^^^^^^^^^^^^^
+AttributeError: 'dict' object has no attribute 'success'
+Build runner exit status: 1

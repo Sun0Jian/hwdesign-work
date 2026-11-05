@@ -1,0 +1,872 @@
+Evidence directory: /home/js12359/hwdesign-work/cmdresp/takehome/evidence/cosim_002
+Tool discovery: vitis-run=/eda/xilinx/2026.1/Vitis/bin/vitis-run; WAVEFLOW_VITIS_PATH=/eda/xilinx/2026.1/Vitis
+Tool discovery: vivado=/eda/xilinx/2026.1/Vivado/bin/vivado; WAVEFLOW_VIVADO_PATH=/eda/xilinx/2026.1/Vivado
+
+****** vitis-run v2026.1 (64-bit)
+  **** SW Build 6497934 on 2026-06-16-10:22:25
+  **** Start of session at: Wed Nov  4 21:57:24 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+
+  **** HLS Build v2026.1 6493734
+Sourcing Tcl script '/home/js12359/hwdesign-work/cmdresp/takehome/run.tcl'
+INFO: [HLS 200-1510] Running: open_project maxpool_prj 
+WARNING: [HLS 200-2182] The 'maxpool_prj' project will not automatically appear within Vitis IDE workspaces and is meant only for TCL batch use.  Please use open_component instead of open_project/open_solution to generate Vitis IDE compatible component files and directory structure.
+Resolution: For help on HLS 200-2182 see docs.amd.com/access/sources/dita/topic?Doc_Version=2026.1%20English&url=ug1448-hls-guidance&resourceid=200-2182.html
+INFO: [HLS 200-10] Opening solution '/home/js12359/hwdesign-work/cmdresp/takehome/maxpool_prj'.
+INFO: [HLS 200-1510] Running: set_top maxpool 
+INFO: [HLS 200-1510] Running: add_files gen/maxpool.cpp -cflags -std=c++14 -I/home/js12359/hwdesign-work/cmdresp/takehome/include -I/home/js12359/hwdesign-work/cmdresp/takehome/gen -I/home/js12359/hwdesign-work/cmdresp/takehome 
+INFO: [HLS 200-10] Adding design file 'gen/maxpool.cpp' to the project
+INFO: [HLS 200-1510] Running: add_files include/streamutils.cpp -cflags -std=c++14 -I/home/js12359/hwdesign-work/cmdresp/takehome/include -I/home/js12359/hwdesign-work/cmdresp/takehome/gen -I/home/js12359/hwdesign-work/cmdresp/takehome 
+INFO: [HLS 200-10] Adding design file 'include/streamutils.cpp' to the project
+INFO: [HLS 200-1510] Running: add_files -tb maxpool_tb.cpp -cflags -std=c++14 -I/home/js12359/hwdesign-work/cmdresp/takehome/include -I/home/js12359/hwdesign-work/cmdresp/takehome/gen -I/home/js12359/hwdesign-work/cmdresp/takehome 
+INFO: [HLS 200-10] Adding test bench file 'maxpool_tb.cpp' to the project
+INFO: [HLS 200-1510] Running: open_solution solution1 -flow_target vivado 
+INFO: [HLS 200-10] Opening solution '/home/js12359/hwdesign-work/cmdresp/takehome/maxpool_prj/solution1'.
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-1611] Setting target device to 'xc7z020-clg484-1'
+INFO: [HLS 200-1505] Using flow_target 'vivado'
+Resolution: For help on HLS 200-1505 see docs.amd.com/access/sources/dita/topic?Doc_Version=2026.1%20English&url=ug1448-hls-guidance&resourceid=200-1505.html
+WARNING: [HLS 200-2149] The 'flow_target' option is deprecated and will be removed in a future release. For 'vivado' value you may simply remove the option for equivalent behavior.
+WARNING: [HLS 200-484] The 'open_solution -flow_target' command is deprecated and will be removed in a future release.
+INFO: [HLS 200-1510] Running: set_part xc7z020clg484-1 
+INFO: [HLS 200-1510] Running: create_clock -period 10 -name default 
+INFO: [HLS 200-1510] Running: cosim_design -rtl verilog -trace_level all -argv /home/js12359/hwdesign-work/cmdresp/takehome/data/scenarios.txt /home/js12359/hwdesign-work/cmdresp/takehome/evidence/cosim_002/tb_cosim.json 
+INFO: [COSIM 212-47] Using XSIM for RTL simulation.
+INFO: [COSIM 212-14] Instrumenting C test bench ...
+   Build using "/eda/xilinx/2026.1/Vitis/lnx64/tools/clang-16/bin/clang++"
+   Compiling apatb_maxpool.cpp
+   Compiling apatb_maxpool_util.cpp
+   Compiling maxpool.cpp_pre.cpp
+   Compiling maxpool_tb.cpp_pre.cpp
+   Compiling streamutils.cpp_pre.cpp
+   Compiling apatb_maxpool_ir.ll
+   Generating cosim.tv.exe
+INFO: [COSIM 212-302] Starting C TB testing ... 
+ACTIVATION 0 performance_64x64_k2 PASS outputs=1026 consumed=4104 status=0,0,0
+ACTIVATION 1 hand_a PASS outputs=6 consumed=24 status=0,0,0
+ACTIVATION 2 hand_b_smallest_negative_tied PASS outputs=3 consumed=12 status=0,0,0
+ACTIVATION 3 largest_k4 PASS outputs=258 consumed=4104 status=0,0,0
+ACTIVATION 4 rectangular_k2 PASS outputs=17 consumed=68 status=0,0,0
+ACTIVATION 5 rectangular_k4 PASS outputs=5 consumed=56 status=0,0,0
+ACTIVATION 6 all_negative_k4 PASS outputs=4 consumed=40 status=0,0,0
+ACTIVATION 7 all_equal_minimum PASS outputs=10 consumed=40 status=0,0,0
+ACTIVATION 8 all_equal_maximum PASS outputs=3 consumed=24 status=0,0,0
+ACTIVATION 9 signed_extremes_poisoned_padding PASS outputs=6 consumed=24 status=0,0,0
+ACTIVATION 10 multiple_compute_changed_every_field PASS outputs=17 consumed=132 status=0,0,0
+ACTIVATION 11 end_only_ignored_invalid_fields PASS outputs=0 consumed=4 status=0,0,0
+ACTIVATION 12 end_only_leaves_queued_input PASS outputs=0 consumed=4 status=0,0,0
+ACTIVATION 13 header_early_beat0 PASS outputs=0 consumed=1 status=1,1,2415919104
+ACTIVATION 14 recovery_after_header_early_beat0 PASS outputs=3 consumed=12 status=0,0,0
+ACTIVATION 15 header_early_beat1 PASS outputs=0 consumed=2 status=1,1,2415919105
+ACTIVATION 16 recovery_after_header_early_beat1 PASS outputs=4 consumed=40 status=0,0,0
+ACTIVATION 17 header_early_beat2 PASS outputs=0 consumed=3 status=1,1,2415919106
+ACTIVATION 18 recovery_after_header_early_beat2 PASS outputs=3 consumed=12 status=0,0,0
+ACTIVATION 19 header_missing_final_tlast PASS outputs=0 consumed=4 status=1,1,2415919107
+ACTIVATION 20 recovery_after_header_missing_final_tlast PASS outputs=4 consumed=40 status=0,0,0
+ACTIVATION 21 end_header_early PASS outputs=0 consumed=2 status=1,1,2415919108
+ACTIVATION 22 recovery_after_end_header_early PASS outputs=3 consumed=12 status=0,0,0
+ACTIVATION 23 end_header_missing PASS outputs=0 consumed=4 status=1,1,2415919109
+ACTIVATION 24 recovery_after_end_header_missing PASS outputs=4 consumed=40 status=0,0,0
+ACTIVATION 25 unknown_opcode_2 PASS outputs=0 consumed=4 status=1,2,2432696326
+ACTIVATION 26 recovery_after_unknown_opcode_2 PASS outputs=3 consumed=12 status=0,0,0
+ACTIVATION 27 unknown_opcode_ffffffff PASS outputs=0 consumed=4 status=1,2,2432696327
+ACTIVATION 28 recovery_after_unknown_opcode_ffffffff PASS outputs=4 consumed=40 status=0,0,0
+ACTIVATION 29 unknown_opcode_10001 PASS outputs=0 consumed=4 status=1,2,2432696328
+ACTIVATION 30 recovery_after_unknown_opcode_10001 PASS outputs=3 consumed=12 status=0,0,0
+ACTIVATION 31 invalid_h_zero PASS outputs=0 consumed=4 status=1,3,2449473536
+ACTIVATION 32 recovery_after_invalid_h_zero PASS outputs=4 consumed=40 status=0,0,0
+ACTIVATION 33 invalid_h_one PASS outputs=0 consumed=4 status=1,3,2449473537
+ACTIVATION 34 recovery_after_invalid_h_one PASS outputs=3 consumed=12 status=0,0,0
+ACTIVATION 35 invalid_h_65 PASS outputs=0 consumed=4 status=1,3,2449473538
+ACTIVATION 36 recovery_after_invalid_h_65 PASS outputs=4 consumed=40 status=0,0,0
+ACTIVATION 37 invalid_h_max_u16 PASS outputs=0 consumed=4 status=1,3,2449473539
+ACTIVATION 38 recovery_after_invalid_h_max_u16 PASS outputs=3 consumed=12 status=0,0,0
+ACTIVATION 39 invalid_w_zero PASS outputs=0 consumed=4 status=1,3,2449473540
+ACTIVATION 40 recovery_after_invalid_w_zero PASS outputs=4 consumed=40 status=0,0,0
+ACTIVATION 41 invalid_w_one PASS outputs=0 consumed=4 status=1,3,2449473541
+ACTIVATION 42 recovery_after_invalid_w_one PASS outputs=3 consumed=12 status=0,0,0
+ACTIVATION 43 invalid_w_65 PASS outputs=0 consumed=4 status=1,3,2449473542
+ACTIVATION 44 recovery_after_invalid_w_65 PASS outputs=4 consumed=40 status=0,0,0
+ACTIVATION 45 invalid_w_max_u16 PASS outputs=0 consumed=4 status=1,3,2449473543
+ACTIVATION 46 recovery_after_invalid_w_max_u16 PASS outputs=3 consumed=12 status=0,0,0
+ACTIVATION 47 invalid_k_zero PASS outputs=0 consumed=4 status=1,3,2449473544
+ACTIVATION 48 recovery_after_invalid_k_zero PASS outputs=4 consumed=40 status=0,0,0
+ACTIVATION 49 invalid_k_one PASS outputs=0 consumed=4 status=1,3,2449473545
+ACTIVATION 50 recovery_after_invalid_k_one PASS outputs=3 consumed=12 status=0,0,0
+ACTIVATION 51 invalid_k_three PASS outputs=0 consumed=4 status=1,3,2449473546
+ACTIVATION 52 recovery_after_invalid_k_three PASS outputs=4 consumed=40 status=0,0,0
+ACTIVATION 53 invalid_k_five PASS outputs=0 consumed=4 status=1,3,2449473547
+ACTIVATION 54 recovery_after_invalid_k_five PASS outputs=3 consumed=12 status=0,0,0
+ACTIVATION 55 invalid_k_max_u32 PASS outputs=0 consumed=4 status=1,3,2449473548
+ACTIVATION 56 recovery_after_invalid_k_max_u32 PASS outputs=4 consumed=40 status=0,0,0
+ACTIVATION 57 invalid_k_large_low_bits_valid PASS outputs=0 consumed=4 status=1,3,2449473549
+ACTIVATION 58 recovery_after_invalid_k_large_low_bits_valid PASS outputs=3 consumed=12 status=0,0,0
+ACTIVATION 59 invalid_k_exceeds_h PASS outputs=0 consumed=4 status=1,3,2449473550
+ACTIVATION 60 recovery_after_invalid_k_exceeds_h PASS outputs=4 consumed=40 status=0,0,0
+ACTIVATION 61 invalid_k_exceeds_w PASS outputs=0 consumed=4 status=1,3,2449473551
+ACTIVATION 62 recovery_after_invalid_k_exceeds_w PASS outputs=3 consumed=12 status=0,0,0
+ACTIVATION 63 invalid_h_not_divisible_k4 PASS outputs=0 consumed=4 status=1,3,2449473552
+ACTIVATION 64 recovery_after_invalid_h_not_divisible_k4 PASS outputs=4 consumed=40 status=0,0,0
+ACTIVATION 65 invalid_w_not_divisible_k4 PASS outputs=0 consumed=4 status=1,3,2449473553
+ACTIVATION 66 recovery_after_invalid_w_not_divisible_k4 PASS outputs=3 consumed=12 status=0,0,0
+ACTIVATION 67 invalid_h_not_divisible_k2 PASS outputs=0 consumed=4 status=1,3,2449473554
+ACTIVATION 68 recovery_after_invalid_h_not_divisible_k2 PASS outputs=4 consumed=40 status=0,0,0
+ACTIVATION 69 invalid_w_not_divisible_k2 PASS outputs=0 consumed=4 status=1,3,2449473555
+ACTIVATION 70 recovery_after_invalid_w_not_divisible_k2 PASS outputs=3 consumed=12 status=0,0,0
+ACTIVATION 71 payload_early_beat0 PASS outputs=0 consumed=5 status=1,4,2466250752
+ACTIVATION 72 recovery_after_payload_early_beat0 PASS outputs=4 consumed=40 status=0,0,0
+ACTIVATION 73 payload_early_beat7 PASS outputs=0 consumed=12 status=1,4,2466250759
+ACTIVATION 74 recovery_after_payload_early_beat7 PASS outputs=3 consumed=12 status=0,0,0
+ACTIVATION 75 payload_early_beat14 PASS outputs=0 consumed=19 status=1,4,2466250766
+ACTIVATION 76 recovery_after_payload_early_beat14 PASS outputs=4 consumed=40 status=0,0,0
+ACTIVATION 77 payload_missing_final_tlast PASS outputs=0 consumed=20 status=1,5,2466250768
+ACTIVATION 78 recovery_after_payload_missing_final_tlast PASS outputs=3 consumed=12 status=0,0,0
+ACTIVATION 79 precedence_early_header_over_unknown_invalid PASS outputs=0 consumed=2 status=1,1,2483027968
+ACTIVATION 80 recovery_after_precedence_early_header_over_unknown_invalid PASS outputs=4 consumed=40 status=0,0,0
+ACTIVATION 81 precedence_missing_header_over_unknown_invalid PASS outputs=0 consumed=4 status=1,1,2483027969
+ACTIVATION 82 recovery_after_precedence_missing_header_over_unknown_invalid PASS outputs=3 consumed=12 status=0,0,0
+ACTIVATION 83 precedence_unknown_over_invalid PASS outputs=0 consumed=4 status=1,2,2483027970
+ACTIVATION 84 recovery_after_precedence_unknown_over_invalid PASS outputs=4 consumed=40 status=0,0,0
+ACTIVATION 85 precedence_invalid_over_early_payload PASS outputs=0 consumed=4 status=1,3,2483027971
+ACTIVATION 86 recovery_after_precedence_invalid_over_early_payload PASS outputs=3 consumed=12 status=0,0,0
+ACTIVATION 87 precedence_early_payload_over_missing_final PASS outputs=0 consumed=7 status=1,4,2483027972
+ACTIVATION 88 recovery_after_precedence_early_payload_over_missing_final PASS outputs=4 consumed=40 status=0,0,0
+ACTIVATION 89 after_success_header_early_beat0 PASS outputs=6 consumed=21 status=1,1,2415919104
+ACTIVATION 90 recovery_after_after_success_header_early_beat0 PASS outputs=3 consumed=12 status=0,0,0
+ACTIVATION 91 after_success_unknown_opcode_2 PASS outputs=6 consumed=24 status=1,2,2432696326
+ACTIVATION 92 recovery_after_after_success_unknown_opcode_2 PASS outputs=4 consumed=40 status=0,0,0
+ACTIVATION 93 after_success_invalid_h_zero PASS outputs=6 consumed=24 status=1,3,2449473536
+ACTIVATION 94 recovery_after_after_success_invalid_h_zero PASS outputs=3 consumed=12 status=0,0,0
+ACTIVATION 95 after_success_payload_early_beat0 PASS outputs=6 consumed=25 status=1,4,2466250752
+ACTIVATION 96 recovery_after_after_success_payload_early_beat0 PASS outputs=4 consumed=40 status=0,0,0
+ACTIVATION 97 after_success_payload_missing_final_tlast PASS outputs=6 consumed=40 status=1,5,2466250768
+ACTIVATION 98 recovery_after_after_success_payload_missing_final_tlast PASS outputs=3 consumed=12 status=0,0,0
+ALL_ACTIVATIONS 99 FAILURES 0
+INFO [HLS SIM]: The maximum depth reached by any hls::stream() instance in the design is 4104
+INFO: [COSIM 212-333] Generating C post check test bench ...
+INFO: [COSIM 212-12] Generating RTL test bench ...
+find not read role field
+find not read role field
+find not read role field
+INFO: [COSIM 212-1] *** C/RTL co-simulation file generation completed. ***
+INFO: [COSIM 212-323] Starting verilog simulation. 
+INFO: [COSIM 212-15] Starting XSIM ...
+Vivado Simulator v2026.1
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: /eda/xilinx/2026.1/Vivado/bin/unwrapped/lnx64.o/xelab xil_defaultlib.apatb_maxpool_top xil_defaultlib.glbl -Oenable_linking_all_libraries -prj maxpool.prj -L smartconnect_v1_0 -L axi_protocol_checker_v1_1_12 -L axi_protocol_checker_v1_1_13 -L axis_protocol_checker_v1_1_11 -L axis_protocol_checker_v1_1_12 -L xil_defaultlib -L unisims_ver -L xpm -L floating_point_v7_1_22 -L floating_point_v7_0_27 --lib ieee_proposed=./ieee_proposed -L uvm -relax -i ./svr -i ./svtb -i ./file_agent -i ./maxpool_subsystem -s maxpool -debug all 
+Multi-threading is on. Using 62 slave threads.
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/js12359/hwdesign-work/cmdresp/takehome/maxpool_prj/solution1/sim/verilog/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/js12359/hwdesign-work/cmdresp/takehome/maxpool_prj/solution1/sim/verilog/maxpool_maxpool_Pipeline_buffer_image.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module maxpool_maxpool_Pipeline_buffer_image
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/js12359/hwdesign-work/cmdresp/takehome/maxpool_prj/solution1/sim/verilog/maxpool_regslice_both.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module maxpool_regslice_both
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/js12359/hwdesign-work/cmdresp/takehome/maxpool_prj/solution1/sim/verilog/maxpool_sparsemux_9_2_16_1_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module maxpool_sparsemux_9_2_16_1_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/js12359/hwdesign-work/cmdresp/takehome/maxpool_prj/solution1/sim/verilog/maxpool_mul_16ns_16ns_32_1_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module maxpool_mul_16ns_16ns_32_1_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/js12359/hwdesign-work/cmdresp/takehome/maxpool_prj/solution1/sim/verilog/maxpool_image_RAM_AUTO_1R1W.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module maxpool_image_RAM_AUTO_1R1W
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/js12359/hwdesign-work/cmdresp/takehome/maxpool_prj/solution1/sim/verilog/AESL_deadlock_idx0_monitor.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_deadlock_idx0_monitor
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/js12359/hwdesign-work/cmdresp/takehome/maxpool_prj/solution1/sim/verilog/maxpool_flow_control_loop_pipe_sequential_init.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module maxpool_flow_control_loop_pipe_sequential_init
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/js12359/hwdesign-work/cmdresp/takehome/maxpool_prj/solution1/sim/verilog/maxpool.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module maxpool
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/js12359/hwdesign-work/cmdresp/takehome/maxpool_prj/solution1/sim/verilog/maxpool_maxpool_Pipeline_read_header.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module maxpool_maxpool_Pipeline_read_header
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/js12359/hwdesign-work/cmdresp/takehome/maxpool_prj/solution1/sim/verilog/maxpool_maxpool_Pipeline_emit_windows.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module maxpool_maxpool_Pipeline_emit_windows
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/js12359/hwdesign-work/cmdresp/takehome/maxpool_prj/solution1/sim/verilog/AESL_deadlock_kernel_monitor_top.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AESL_deadlock_kernel_monitor_top
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/js12359/hwdesign-work/cmdresp/takehome/maxpool_prj/solution1/sim/verilog/maxpool_mul_15ns_15ns_30_1_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module maxpool_mul_15ns_15ns_30_1_1
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/js12359/hwdesign-work/cmdresp/takehome/maxpool_prj/solution1/sim/verilog/maxpool.autotb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module apatb_maxpool_top
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/js12359/hwdesign-work/cmdresp/takehome/maxpool_prj/solution1/sim/verilog/maxpool_control_s_axi.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module maxpool_control_s_axi
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/js12359/hwdesign-work/cmdresp/takehome/maxpool_prj/solution1/sim/verilog/dataflow_monitor.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module dataflow_monitor
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/js12359/hwdesign-work/cmdresp/takehome/maxpool_prj/solution1/sim/verilog/file_agent/file_agent_pkg.sv" into library xil_defaultlib
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/js12359/hwdesign-work/cmdresp/takehome/maxpool_prj/solution1/sim/verilog/svr/svr_pkg.sv" into library xil_defaultlib
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/js12359/hwdesign-work/cmdresp/takehome/maxpool_prj/solution1/sim/verilog/svr/svr_if.sv" into library xil_defaultlib
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/js12359/hwdesign-work/cmdresp/takehome/maxpool_prj/solution1/sim/verilog/axivip/axi_pkg.sv" into library xil_defaultlib
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/js12359/hwdesign-work/cmdresp/takehome/maxpool_prj/solution1/sim/verilog/axivip/axi_if.sv" into library xil_defaultlib
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/js12359/hwdesign-work/cmdresp/takehome/maxpool_prj/solution1/sim/verilog/maxpool_subsystem/maxpool_subsystem_pkg.sv" into library xil_defaultlib
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/js12359/hwdesign-work/cmdresp/takehome/maxpool_prj/solution1/sim/verilog/svtb/misc_interface.sv" into library xil_defaultlib
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/js12359/hwdesign-work/cmdresp/takehome/maxpool_prj/solution1/sim/verilog/svtb/sv_module_top.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sv_module_top
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package xil_defaultlib.$unit_sv_module_top_sv
+Compiling package uvm.uvm_pkg
+Compiling package std.std
+Compiling package xil_defaultlib.svr_pkg
+Compiling package xil_defaultlib.file_agent_pkg
+Compiling package xil_defaultlib.axi_pkg
+Compiling package xil_defaultlib.maxpool_subsystem_pkg
+Compiling package xil_defaultlib.$unit_dataflow_monitor_sv
+Compiling module xil_defaultlib.maxpool_image_RAM_AUTO_1R1W
+Compiling module xil_defaultlib.maxpool_maxpool_Pipeline_read_he...
+Compiling module xil_defaultlib.maxpool_flow_control_loop_pipe_s...
+Compiling module xil_defaultlib.maxpool_maxpool_Pipeline_buffer_...
+Compiling module xil_defaultlib.maxpool_sparsemux_9_2_16_1_1(din...
+Compiling module xil_defaultlib.maxpool_maxpool_Pipeline_emit_wi...
+Compiling module xil_defaultlib.maxpool_control_s_axi
+Compiling module xil_defaultlib.maxpool_mul_16ns_16ns_32_1_1(NUM...
+Compiling module xil_defaultlib.maxpool_mul_15ns_15ns_30_1_1(NUM...
+Compiling module xil_defaultlib.maxpool_regslice_both(DataWidth=...
+Compiling module xil_defaultlib.maxpool_regslice_both(DataWidth=...
+Compiling module xil_defaultlib.maxpool_regslice_both(DataWidth=...
+Compiling module xil_defaultlib.maxpool
+Compiling module xil_defaultlib.misc_interface_default
+Compiling module xil_defaultlib.svr_if(DATA_WIDTH=41)
+Compiling module xil_defaultlib.axi_if(ADDR_WIDTH=6,STRB_WIDTH=4...
+Compiling module xil_defaultlib.sv_module_top
+Compiling module xil_defaultlib.AESL_deadlock_idx0_monitor
+Compiling module xil_defaultlib.AESL_deadlock_kernel_monitor_top...
+Compiling module xil_defaultlib.nodf_module_intf_default
+Compiling module xil_defaultlib.pp_loop_intf(FSM_WIDTH=4)
+Compiling module xil_defaultlib.seq_loop_intf(FSM_WIDTH=17)
+Compiling module xil_defaultlib.upc_loop_intf(FSM_WIDTH=1)
+Compiling module xil_defaultlib.dataflow_monitor_1
+Compiling module xil_defaultlib.apatb_maxpool_top
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot maxpool
+
+****** xsim v2026.1 (64-bit)
+  **** SW Build 6511674 on Tue Jun 16 11:01:26 MDT 2026
+  **** IP Build 6504888 on Tue Jun 09 09:05:25 MDT 2026
+  **** SharedData Build 6501428 on Mon Jun 08 17:34:18 MDT 2026
+  **** Start of session at: Wed Nov  4 21:58:14 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source xsim.dir/maxpool/xsim_script.tcl
+# xsim {maxpool} -testplusarg UVM_VERBOSITY=UVM_NONE -testplusarg UVM_TESTNAME=maxpool_test_lib -testplusarg UVM_TIMEOUT=20000000000000 -view {{maxpool_dataflow_ana.wcfg}} -tclbatch {maxpool.tcl} -protoinst {maxpool.protoinst}
+INFO: [Wavedata 42-565] Reading protoinst file maxpool.protoinst
+INFO: [Wavedata 42-564]   Found protocol instance at /apatb_maxpool_top/AESL_inst_maxpool//AESL_inst_maxpool_activity
+INFO: [Wavedata 42-564]   Found protocol instance at /apatb_maxpool_top/AESL_inst_maxpool/grp_maxpool_Pipeline_buffer_image_fu_435/grp_maxpool_Pipeline_buffer_image_fu_435_activity
+INFO: [Wavedata 42-564]   Found protocol instance at /apatb_maxpool_top/AESL_inst_maxpool/grp_maxpool_Pipeline_emit_windows_fu_466/grp_maxpool_Pipeline_emit_windows_fu_466_activity
+INFO: [Wavedata 42-564]   Found protocol instance at /apatb_maxpool_top/AESL_inst_maxpool/grp_maxpool_Pipeline_read_header_fu_409/grp_maxpool_Pipeline_read_header_fu_409_activity
+Time resolution is 1 ps
+open_wave_config maxpool_dataflow_ana.wcfg
+source maxpool.tcl
+## log_wave -r /
+## set designtopgroup [add_wave_group "Design Top Signals"]
+## set coutputgroup [add_wave_group "C Outputs" -into $designtopgroup]
+## set return_group [add_wave_group return(axis) -into $coutputgroup]
+## add_wave /apatb_maxpool_top/AESL_inst_maxpool/m_out_TLAST -into $return_group -color #ffff00 -radix hex
+## add_wave /apatb_maxpool_top/AESL_inst_maxpool/m_out_TSTRB -into $return_group -radix hex
+## add_wave /apatb_maxpool_top/AESL_inst_maxpool/m_out_TKEEP -into $return_group -radix hex
+## add_wave /apatb_maxpool_top/AESL_inst_maxpool/m_out_TREADY -into $return_group -color #ffff00 -radix hex
+## add_wave /apatb_maxpool_top/AESL_inst_maxpool/m_out_TVALID -into $return_group -color #ffff00 -radix hex
+## add_wave /apatb_maxpool_top/AESL_inst_maxpool/m_out_TDATA -into $return_group -radix hex
+## set halted__error__error_tx_id__return_group [add_wave_group halted__error__error_tx_id__return(axi_slave) -into $coutputgroup]
+## add_wave /apatb_maxpool_top/AESL_inst_maxpool/interrupt -into $halted__error__error_tx_id__return_group -color #ffff00 -radix hex
+## add_wave /apatb_maxpool_top/AESL_inst_maxpool/s_axi_control_BRESP -into $halted__error__error_tx_id__return_group -radix hex
+## add_wave /apatb_maxpool_top/AESL_inst_maxpool/s_axi_control_BREADY -into $halted__error__error_tx_id__return_group -color #ffff00 -radix hex
+## add_wave /apatb_maxpool_top/AESL_inst_maxpool/s_axi_control_BVALID -into $halted__error__error_tx_id__return_group -color #ffff00 -radix hex
+## add_wave /apatb_maxpool_top/AESL_inst_maxpool/s_axi_control_RRESP -into $halted__error__error_tx_id__return_group -radix hex
+## add_wave /apatb_maxpool_top/AESL_inst_maxpool/s_axi_control_RDATA -into $halted__error__error_tx_id__return_group -radix hex
+## add_wave /apatb_maxpool_top/AESL_inst_maxpool/s_axi_control_RREADY -into $halted__error__error_tx_id__return_group -color #ffff00 -radix hex
+## add_wave /apatb_maxpool_top/AESL_inst_maxpool/s_axi_control_RVALID -into $halted__error__error_tx_id__return_group -color #ffff00 -radix hex
+## add_wave /apatb_maxpool_top/AESL_inst_maxpool/s_axi_control_ARREADY -into $halted__error__error_tx_id__return_group -color #ffff00 -radix hex
+## add_wave /apatb_maxpool_top/AESL_inst_maxpool/s_axi_control_ARVALID -into $halted__error__error_tx_id__return_group -color #ffff00 -radix hex
+## add_wave /apatb_maxpool_top/AESL_inst_maxpool/s_axi_control_ARADDR -into $halted__error__error_tx_id__return_group -radix hex
+## add_wave /apatb_maxpool_top/AESL_inst_maxpool/s_axi_control_WSTRB -into $halted__error__error_tx_id__return_group -radix hex
+## add_wave /apatb_maxpool_top/AESL_inst_maxpool/s_axi_control_WDATA -into $halted__error__error_tx_id__return_group -radix hex
+## add_wave /apatb_maxpool_top/AESL_inst_maxpool/s_axi_control_WREADY -into $halted__error__error_tx_id__return_group -color #ffff00 -radix hex
+## add_wave /apatb_maxpool_top/AESL_inst_maxpool/s_axi_control_WVALID -into $halted__error__error_tx_id__return_group -color #ffff00 -radix hex
+## add_wave /apatb_maxpool_top/AESL_inst_maxpool/s_axi_control_AWREADY -into $halted__error__error_tx_id__return_group -color #ffff00 -radix hex
+## add_wave /apatb_maxpool_top/AESL_inst_maxpool/s_axi_control_AWVALID -into $halted__error__error_tx_id__return_group -color #ffff00 -radix hex
+## add_wave /apatb_maxpool_top/AESL_inst_maxpool/s_axi_control_AWADDR -into $halted__error__error_tx_id__return_group -radix hex
+## set cinputgroup [add_wave_group "C Inputs" -into $designtopgroup]
+## set return_group [add_wave_group return(axis) -into $cinputgroup]
+## add_wave /apatb_maxpool_top/AESL_inst_maxpool/s_in_TLAST -into $return_group -color #ffff00 -radix hex
+## add_wave /apatb_maxpool_top/AESL_inst_maxpool/s_in_TSTRB -into $return_group -radix hex
+## add_wave /apatb_maxpool_top/AESL_inst_maxpool/s_in_TKEEP -into $return_group -radix hex
+## add_wave /apatb_maxpool_top/AESL_inst_maxpool/s_in_TREADY -into $return_group -color #ffff00 -radix hex
+## add_wave /apatb_maxpool_top/AESL_inst_maxpool/s_in_TVALID -into $return_group -color #ffff00 -radix hex
+## add_wave /apatb_maxpool_top/AESL_inst_maxpool/s_in_TDATA -into $return_group -radix hex
+## set blocksiggroup [add_wave_group "Block-level IO Handshake(internal)" -into $designtopgroup]
+## add_wave /apatb_maxpool_top/AESL_inst_maxpool/ap_done -into $blocksiggroup
+## add_wave /apatb_maxpool_top/AESL_inst_maxpool/ap_idle -into $blocksiggroup
+## add_wave /apatb_maxpool_top/AESL_inst_maxpool/ap_ready -into $blocksiggroup
+## add_wave /apatb_maxpool_top/AESL_inst_maxpool/ap_start -into $blocksiggroup
+## set resetgroup [add_wave_group "Reset" -into $designtopgroup]
+## add_wave /apatb_maxpool_top/AESL_inst_maxpool/ap_rst_n -into $resetgroup
+## set clockgroup [add_wave_group "Clock" -into $designtopgroup]
+## add_wave /apatb_maxpool_top/AESL_inst_maxpool/ap_clk -into $clockgroup
+## set testbenchgroup [add_wave_group "Test Bench Signals"]
+## set tbinternalsiggroup [add_wave_group "Internal Signals" -into $testbenchgroup]
+## set tb_simstatus_group [add_wave_group "Simulation Status" -into $tbinternalsiggroup]
+## set tb_portdepth_group [add_wave_group "Port Depth" -into $tbinternalsiggroup]
+## add_wave /apatb_maxpool_top/AUTOTB_TRANSACTION_NUM -into $tb_simstatus_group -radix hex
+## add_wave /apatb_maxpool_top/ready_cnt -into $tb_simstatus_group -radix hex
+## add_wave /apatb_maxpool_top/done_cnt -into $tb_simstatus_group -radix hex
+## add_wave /apatb_maxpool_top/LENGTH_error -into $tb_portdepth_group -radix hex
+## add_wave /apatb_maxpool_top/LENGTH_error_tx_id -into $tb_portdepth_group -radix hex
+## add_wave /apatb_maxpool_top/LENGTH_halted -into $tb_portdepth_group -radix hex
+## add_wave /apatb_maxpool_top/LENGTH_m_out_V_data_V -into $tb_portdepth_group -radix hex
+## add_wave /apatb_maxpool_top/LENGTH_m_out_V_keep_V -into $tb_portdepth_group -radix hex
+## add_wave /apatb_maxpool_top/LENGTH_m_out_V_last_V -into $tb_portdepth_group -radix hex
+## add_wave /apatb_maxpool_top/LENGTH_m_out_V_strb_V -into $tb_portdepth_group -radix hex
+## add_wave /apatb_maxpool_top/LENGTH_s_in_V_data_V -into $tb_portdepth_group -radix hex
+## add_wave /apatb_maxpool_top/LENGTH_s_in_V_keep_V -into $tb_portdepth_group -radix hex
+## add_wave /apatb_maxpool_top/LENGTH_s_in_V_last_V -into $tb_portdepth_group -radix hex
+## add_wave /apatb_maxpool_top/LENGTH_s_in_V_strb_V -into $tb_portdepth_group -radix hex
+## set tbcoutputgroup [add_wave_group "C Outputs" -into $testbenchgroup]
+## set tb_return_group [add_wave_group return(axis) -into $tbcoutputgroup]
+## add_wave /apatb_maxpool_top/m_out_TLAST -into $tb_return_group -color #ffff00 -radix hex
+## add_wave /apatb_maxpool_top/m_out_TSTRB -into $tb_return_group -radix hex
+## add_wave /apatb_maxpool_top/m_out_TKEEP -into $tb_return_group -radix hex
+## add_wave /apatb_maxpool_top/m_out_TREADY -into $tb_return_group -color #ffff00 -radix hex
+## add_wave /apatb_maxpool_top/m_out_TVALID -into $tb_return_group -color #ffff00 -radix hex
+## add_wave /apatb_maxpool_top/m_out_TDATA -into $tb_return_group -radix hex
+## set tb_halted__error__error_tx_id__return_group [add_wave_group halted__error__error_tx_id__return(axi_slave) -into $tbcoutputgroup]
+## add_wave /apatb_maxpool_top/control_INTERRUPT -into $tb_halted__error__error_tx_id__return_group -color #ffff00 -radix hex
+## add_wave /apatb_maxpool_top/control_BRESP -into $tb_halted__error__error_tx_id__return_group -radix hex
+## add_wave /apatb_maxpool_top/control_BREADY -into $tb_halted__error__error_tx_id__return_group -color #ffff00 -radix hex
+## add_wave /apatb_maxpool_top/control_BVALID -into $tb_halted__error__error_tx_id__return_group -color #ffff00 -radix hex
+## add_wave /apatb_maxpool_top/control_RRESP -into $tb_halted__error__error_tx_id__return_group -radix hex
+## add_wave /apatb_maxpool_top/control_RDATA -into $tb_halted__error__error_tx_id__return_group -radix hex
+## add_wave /apatb_maxpool_top/control_RREADY -into $tb_halted__error__error_tx_id__return_group -color #ffff00 -radix hex
+## add_wave /apatb_maxpool_top/control_RVALID -into $tb_halted__error__error_tx_id__return_group -color #ffff00 -radix hex
+## add_wave /apatb_maxpool_top/control_ARREADY -into $tb_halted__error__error_tx_id__return_group -color #ffff00 -radix hex
+## add_wave /apatb_maxpool_top/control_ARVALID -into $tb_halted__error__error_tx_id__return_group -color #ffff00 -radix hex
+## add_wave /apatb_maxpool_top/control_ARADDR -into $tb_halted__error__error_tx_id__return_group -radix hex
+## add_wave /apatb_maxpool_top/control_WSTRB -into $tb_halted__error__error_tx_id__return_group -radix hex
+## add_wave /apatb_maxpool_top/control_WDATA -into $tb_halted__error__error_tx_id__return_group -radix hex
+## add_wave /apatb_maxpool_top/control_WREADY -into $tb_halted__error__error_tx_id__return_group -color #ffff00 -radix hex
+## add_wave /apatb_maxpool_top/control_WVALID -into $tb_halted__error__error_tx_id__return_group -color #ffff00 -radix hex
+## add_wave /apatb_maxpool_top/control_AWREADY -into $tb_halted__error__error_tx_id__return_group -color #ffff00 -radix hex
+## add_wave /apatb_maxpool_top/control_AWVALID -into $tb_halted__error__error_tx_id__return_group -color #ffff00 -radix hex
+## add_wave /apatb_maxpool_top/control_AWADDR -into $tb_halted__error__error_tx_id__return_group -radix hex
+## set tbcinputgroup [add_wave_group "C Inputs" -into $testbenchgroup]
+## set tb_return_group [add_wave_group return(axis) -into $tbcinputgroup]
+## add_wave /apatb_maxpool_top/s_in_TLAST -into $tb_return_group -color #ffff00 -radix hex
+## add_wave /apatb_maxpool_top/s_in_TSTRB -into $tb_return_group -radix hex
+## add_wave /apatb_maxpool_top/s_in_TKEEP -into $tb_return_group -radix hex
+## add_wave /apatb_maxpool_top/s_in_TREADY -into $tb_return_group -color #ffff00 -radix hex
+## add_wave /apatb_maxpool_top/s_in_TVALID -into $tb_return_group -color #ffff00 -radix hex
+## add_wave /apatb_maxpool_top/s_in_TDATA -into $tb_return_group -radix hex
+## save_wave_config maxpool.wcfg
+## run all
+UVM_INFO /eda/xilinx/2026.1/Vivado/data/system_verilog/uvm_1.2/xlnx_uvm_package.sv(18601) @ 0: reporter [UVM/RELNOTES] 
+----------------------------------------------------------------
+UVM-1.2
+(C) 2007-2014 Mentor Graphics Corporation
+(C) 2007-2014 Cadence Design Systems, Inc.
+(C) 2006-2014 Synopsys, Inc.
+(C) 2011-2013 Cypress Semiconductor Corp.
+(C) 2013-2014 NVIDIA Corporation
+----------------------------------------------------------------
+
+  ***********       IMPORTANT RELEASE NOTES         ************
+
+  You are using a version of the UVM library that has been compiled
+  with `UVM_NO_DEPRECATED undefined.
+
+  You are using a version of the UVM library that has been compiled
+  with `UVM_OBJECT_DO_NOT_NEED_CONSTRUCTOR undefined.
+
+      (Specify +UVM_NO_RELNOTES to turn off this notice)
+
+UVM_INFO /eda/xilinx/2026.1/Vivado/data/system_verilog/uvm_1.2/xlnx_uvm_package.sv(18648) @ 0: reporter [NO_DPI_TSTNAME] UVM_NO_DPI defined--getting UVM_TESTNAME directly, without DPI
+UVM_INFO /eda/xilinx/2026.1/Vivado/data/system_verilog/uvm_1.2/xlnx_uvm_package.sv(18752) @ 0: reporter [UVMTOP] UVM testbench topology:
+----------------------------------------------------------------------------------------------------------
+Name                                               Type                              Size  Value          
+----------------------------------------------------------------------------------------------------------
+uvm_test_top                                       maxpool_test_lib                  -     @370           
+  top_env                                          maxpool_env                       -     @381           
+    axi_lite_control                               uvm_env                           -     @428           
+      item_rtr_port                                uvm_analysis_port                 -     @447           
+      item_wtr_port                                uvm_analysis_port                 -     @437           
+      master                                       uvm_agent                         -     @840           
+        ardrv                                      uvm_driver #(REQ,RSP)             -     @1515          
+          item_read_imp                            uvm_analysis_port                 -     @1544          
+          rsp_port                                 uvm_analysis_port                 -     @1534          
+          seq_item_port                            uvm_seq_item_pull_port            -     @1524          
+          m_num_sent                               integral                          32    'h0            
+        arsqr                                      axi_sequencer                     -     @1554          
+          rsp_export                               uvm_analysis_export               -     @1563          
+          seq_item_export                          uvm_seq_item_pull_imp             -     @1681          
+          arbitration_queue                        array                             0     -              
+          lock_queue                               array                             0     -              
+          num_last_reqs                            integral                          32    'd1            
+          num_last_rsps                            integral                          32    'd1            
+        awdrv                                      uvm_driver #(REQ,RSP)             -     @987           
+          item_read_imp                            uvm_analysis_port                 -     @1016          
+          rsp_port                                 uvm_analysis_port                 -     @1006          
+          seq_item_port                            uvm_seq_item_pull_port            -     @996           
+          m_num_sent                               integral                          32    'h0            
+        awsqr                                      axi_sequencer                     -     @1026          
+          rsp_export                               uvm_analysis_export               -     @1035          
+          seq_item_export                          uvm_seq_item_pull_imp             -     @1153          
+          arbitration_queue                        array                             0     -              
+          lock_queue                               array                             0     -              
+          num_last_reqs                            integral                          32    'd1            
+          num_last_rsps                            integral                          32    'd1            
+        bdrv                                       uvm_driver #(REQ,RSP)             -     @1339          
+          item_read_imp                            uvm_analysis_port                 -     @1368          
+          rsp_port                                 uvm_analysis_port                 -     @1358          
+          seq_item_port                            uvm_seq_item_pull_port            -     @1348          
+          m_num_sent                               integral                          32    'h0            
+        bsqr                                       axi_sequencer                     -     @1378          
+          rsp_export                               uvm_analysis_export               -     @1387          
+          seq_item_export                          uvm_seq_item_pull_imp             -     @1505          
+          arbitration_queue                        array                             0     -              
+          lock_queue                               array                             0     -              
+          num_last_reqs                            integral                          32    'd1            
+          num_last_rsps                            integral                          32    'd1            
+        rdrv                                       uvm_driver #(REQ,RSP)             -     @1691          
+          item_read_imp                            uvm_analysis_port                 -     @1720          
+          rsp_port                                 uvm_analysis_port                 -     @1710          
+          seq_item_port                            uvm_seq_item_pull_port            -     @1700          
+          m_num_sent                               integral                          32    'h0            
+        rsqr                                       axi_sequencer                     -     @1730          
+          rsp_export                               uvm_analysis_export               -     @1739          
+          seq_item_export                          uvm_seq_item_pull_imp             -     @1857          
+          arbitration_queue                        array                             0     -              
+          lock_queue                               array                             0     -              
+          num_last_reqs                            integral                          32    'd1            
+          num_last_rsps                            integral                          32    'd1            
+        wdrv                                       uvm_driver #(REQ,RSP)             -     @1163          
+          item_read_imp                            uvm_analysis_port                 -     @1192          
+          rsp_port                                 uvm_analysis_port                 -     @1182          
+          seq_item_port                            uvm_seq_item_pull_port            -     @1172          
+          m_num_sent                               integral                          32    'h0            
+        wsqr                                       axi_sequencer                     -     @1202          
+          rsp_export                               uvm_analysis_export               -     @1211          
+          seq_item_export                          uvm_seq_item_pull_imp             -     @1329          
+          arbitration_queue                        array                             0     -              
+          lock_queue                               array                             0     -              
+          num_last_reqs                            integral                          32    'd1            
+          num_last_rsps                            integral                          32    'd1            
+      monitor                                      uvm_monitor                       -     @662           
+        item_ar2r_port                             uvm_analysis_port                 -     @731           
+        item_ar_port                               uvm_analysis_port                 -     @701           
+        item_aw2b_port                             uvm_analysis_port                 -     @721           
+        item_aw_port                               uvm_analysis_port                 -     @671           
+        item_b_port                                uvm_analysis_port                 -     @691           
+        item_r_port                                uvm_analysis_port                 -     @711           
+        item_w_port                                uvm_analysis_port                 -     @681           
+        checks_enable                              integral                          1     'h1            
+        coverage_enable                            integral                          1     'h1            
+      state                                        axi_state                         -     @741           
+        ar2r_imp                                   uvm_analysis_imp_ar2r             -     @810           
+        ar_imp                                     uvm_analysis_imp_ar               -     @780           
+        aw2b_imp                                   uvm_analysis_imp_aw2b             -     @800           
+        aw_imp                                     uvm_analysis_imp_aw               -     @750           
+        b_imp                                      uvm_analysis_imp_b                -     @770           
+        item_rtr_port                              uvm_analysis_port                 -     @830           
+        item_wtr_port                              uvm_analysis_port                 -     @820           
+        r_imp                                      uvm_analysis_imp_r                -     @790           
+        w_imp                                      uvm_analysis_imp_w                -     @760           
+        avg_rate                                   integral                          32    'h0            
+        exp_rate                                   integral                          32    'h0            
+        win_size                                   integral                          32    'h0            
+        bqnum_for_slaseq                           integral                          32    'h0            
+        rq_from_model_num                          integral                          32    'h0            
+      vsqr                                         axi_virtual_sequencer             -     @849           
+        rsp_export                                 uvm_analysis_export               -     @858           
+        seq_item_export                            uvm_seq_item_pull_imp             -     @976           
+        arbitration_queue                          array                             0     -              
+        lock_queue                                 array                             0     -              
+        num_last_reqs                              integral                          32    'd1            
+        num_last_rsps                              integral                          32    'd1            
+      cfg                                          axi_cfg                           -     @400           
+        has_checker                                integral                          1     'h1            
+        has_coverage                               integral                          1     'h1            
+        id_num                                     integral                          32    'h1            
+        reset_level                                reset_level_enum                  32    RESET_LEVEL_LOW
+        drv_type                                   drv_type_enum                     32    MASTER         
+        write_latency_mode                         latency_mode_enum                 32    CHANNEL_FIRST  
+        read_latency_mode                          latency_mode_enum                 32    CHANNEL_FIRST  
+        clatency                                   axi_latency                       -     @424           
+          wr_latency                               integral                          32    'h0            
+          rd_latency                               integral                          32    'h0            
+    env_master_svr_s_in                            uvm_env                           -     @401           
+      m_agt                                        uvm_agent                         -     @1935          
+        drv                                        uvm_driver #(REQ,RSP)             -     @2083          
+          rsp_port                                 uvm_analysis_port                 -     @2102          
+          seq_item_port                            uvm_seq_item_pull_port            -     @2092          
+        mon                                        uvm_monitor                       -     @2112          
+          item_collect_port                        uvm_analysis_port                 -     @2123          
+        sqr                                        uvm_sequencer                     -     @1946          
+          rsp_export                               uvm_analysis_export               -     @1955          
+          seq_item_export                          uvm_seq_item_pull_imp             -     @2073          
+          arbitration_queue                        array                             0     -              
+          lock_queue                               array                             0     -              
+          num_last_reqs                            integral                          32    'd1            
+          num_last_rsps                            integral                          32    'd1            
+    env_slave_svr_m_out                            uvm_env                           -     @414           
+      s_agt                                        uvm_agent                         -     @2141          
+        drv                                        uvm_driver #(REQ,RSP)             -     @2289          
+          rsp_port                                 uvm_analysis_port                 -     @2308          
+          seq_item_port                            uvm_seq_item_pull_port            -     @2298          
+        mon                                        uvm_monitor                       -     @2318          
+          item_collect_port                        uvm_analysis_port                 -     @2329          
+        sqr                                        uvm_sequencer                     -     @2152          
+          rsp_export                               uvm_analysis_export               -     @2161          
+          seq_item_export                          uvm_seq_item_pull_imp             -     @2279          
+          arbitration_queue                        array                             0     -              
+          lock_queue                               array                             0     -              
+          num_last_reqs                            integral                          32    'd1            
+          num_last_rsps                            integral                          32    'd1            
+    maxpool_virtual_sqr                            maxpool_virtual_sequencer         -     @519           
+      rsp_export                                   uvm_analysis_export               -     @528           
+      seq_item_export                              uvm_seq_item_pull_imp             -     @646           
+      arbitration_queue                            array                             0     -              
+      lock_queue                                   array                             0     -              
+      num_last_reqs                                integral                          32    'd1            
+      num_last_rsps                                integral                          32    'd1            
+    refm                                           maxpool_reference_model           -     @457           
+      trans_num_idx                                integral                          32    'h0            
+    subsys_mon                                     maxpool_subsystem_monitor         -     @470           
+      control_rtr_imp                              uvm_analysis_imp_axi_rtr_control  -     @509           
+      control_wtr_imp                              uvm_analysis_imp_axi_wtr_control  -     @499           
+      scbd                                         maxpool_scoreboard                -     @2356          
+        refm                                       maxpool_reference_model           -     @457           
+          trans_num_idx                            integral                          32    'h0            
+        file_rd_TVOUT_transaction_size             <unknown>                         -     @2366          
+          TV_FILE                                  string                            0     ""             
+          fp                                       integral                          32    'hxxxxxxxx     
+          TV_FILE_num                              integral                          32    'h0            
+          HEX_read                                 integral                          32    'h0            
+          DEC_read                                 integral                          32    'h0            
+          is_binary                                integral                          32    'h0            
+          TV_FILE_COMPARE                          string                            0     ""             
+          fp_compare                               integral                          32    'hxxxxxxxx     
+        TVOUT_transaction_size_queue               da(integral)                      0     -              
+        file_wr_port_m_out_m_out_TDATA             <unknown>                         -     @2367          
+          TV_FILE                                  string                            0     ""             
+          fp                                       integral                          32    'hxxxxxxxx     
+          file_open                                integral                          32    'h0            
+          write_file_done                          integral                          32    'h0            
+          write_section_done                       integral                          32    'h0            
+          TRANSACTION_NUM                          integral                          32    'h0            
+          transaction_num_idx                      integral                          32    'h0            
+          TRANSACTION_DEPTH                        integral                          32    'h0            
+          TRANSACTION_DEPTH_queue                  da(integral)                      0     -              
+          TRANSACTION_DEPTH_queue_for_depth_check  da(integral)                      0     -              
+          transaction_depth_idx                    integral                          32    'h0            
+          ap_done_num_idx                          integral                          32    'h0            
+          is_binary                                integral                          32    'h0            
+        write_file_done_m_out_m_out_TDATA          integral                          32    'h0            
+        write_section_done_m_out_m_out_TDATA       integral                          32    'h0            
+        file_wr_port_m_out_m_out_TKEEP             <unknown>                         -     @2368          
+          TV_FILE                                  string                            0     ""             
+          fp                                       integral                          32    'hxxxxxxxx     
+          file_open                                integral                          32    'h0            
+          write_file_done                          integral                          32    'h0            
+          write_section_done                       integral                          32    'h0            
+          TRANSACTION_NUM                          integral                          32    'h0            
+          transaction_num_idx                      integral                          32    'h0            
+          TRANSACTION_DEPTH                        integral                          32    'h0            
+          TRANSACTION_DEPTH_queue                  da(integral)                      0     -              
+          TRANSACTION_DEPTH_queue_for_depth_check  da(integral)                      0     -              
+          transaction_depth_idx                    integral                          32    'h0            
+          ap_done_num_idx                          integral                          32    'h0            
+          is_binary                                integral                          32    'h0            
+        write_file_done_m_out_m_out_TKEEP          integral                          32    'h0            
+        write_section_done_m_out_m_out_TKEEP       integral                          32    'h0            
+        file_wr_port_m_out_m_out_TSTRB             <unknown>                         -     @2369          
+          TV_FILE                                  string                            0     ""             
+          fp                                       integral                          32    'hxxxxxxxx     
+          file_open                                integral                          32    'h0            
+          write_file_done                          integral                          32    'h0            
+          write_section_done                       integral                          32    'h0            
+          TRANSACTION_NUM                          integral                          32    'h0            
+          transaction_num_idx                      integral                          32    'h0            
+          TRANSACTION_DEPTH                        integral                          32    'h0            
+          TRANSACTION_DEPTH_queue                  da(integral)                      0     -              
+          TRANSACTION_DEPTH_queue_for_depth_check  da(integral)                      0     -              
+          transaction_depth_idx                    integral                          32    'h0            
+          ap_done_num_idx                          integral                          32    'h0            
+          is_binary                                integral                          32    'h0            
+        write_file_done_m_out_m_out_TSTRB          integral                          32    'h0            
+        write_section_done_m_out_m_out_TSTRB       integral                          32    'h0            
+        file_wr_port_m_out_m_out_TLAST             <unknown>                         -     @2370          
+          TV_FILE                                  string                            0     ""             
+          fp                                       integral                          32    'hxxxxxxxx     
+          file_open                                integral                          32    'h0            
+          write_file_done                          integral                          32    'h0            
+          write_section_done                       integral                          32    'h0            
+          TRANSACTION_NUM                          integral                          32    'h0            
+          transaction_num_idx                      integral                          32    'h0            
+          TRANSACTION_DEPTH                        integral                          32    'h0            
+          TRANSACTION_DEPTH_queue                  da(integral)                      0     -              
+          TRANSACTION_DEPTH_queue_for_depth_check  da(integral)                      0     -              
+          transaction_depth_idx                    integral                          32    'h0            
+          ap_done_num_idx                          integral                          32    'h0            
+          is_binary                                integral                          32    'h0            
+        write_file_done_m_out_m_out_TLAST          integral                          32    'h0            
+        write_section_done_m_out_m_out_TLAST       integral                          32    'h0            
+      svr_master_s_in_imp                          uvm_analysis_imp_svr_master_s_in  -     @479           
+      svr_slave_m_out_imp                          uvm_analysis_imp_svr_slave_m_out  -     @489           
+    env_master_svr_s_in                            uvm_env                           -     @401           
+    env_slave_svr_m_out                            uvm_env                           -     @414           
+    refm                                           maxpool_reference_model           -     @457           
+    maxpool_virtual_sqr                            maxpool_virtual_sequencer         -     @519           
+    maxpool_cfg                                    maxpool_config                    -     @395           
+      port_s_in_cfg                                svr_config                        -     @396           
+        svr_type                                   svr_inst_type                     32    SVR_MASTER     
+        prt_type                                   svr_protocol_type                 32    AXIS           
+        is_active                                  svr_active_passive_enum           1     SVR_ACTIVE     
+        reset_level                                svr_reset_level_enum              1     RESET_LEVEL_LOW
+        spec_cfg                                   svr_spec_cfg_enum                 32    NORMAL         
+        clatency                                   svr_latency                       -     @397           
+          transfer_latency                         integral                          32    'h0            
+      port_m_out_cfg                               svr_config                        -     @398           
+        svr_type                                   svr_inst_type                     32    SVR_SLAVE      
+        prt_type                                   svr_protocol_type                 32    AXIS           
+        is_active                                  svr_active_passive_enum           1     SVR_ACTIVE     
+        reset_level                                svr_reset_level_enum              1     RESET_LEVEL_LOW
+        spec_cfg                                   svr_spec_cfg_enum                 32    NORMAL         
+        clatency                                   svr_latency                       -     @399           
+          transfer_latency                         integral                          32    'h0            
+      control_cfg                                  axi_cfg                           -     @400           
+        has_checker                                integral                          1     'h1            
+        has_coverage                               integral                          1     'h1            
+        id_num                                     integral                          32    'h1            
+        reset_level                                reset_level_enum                  32    RESET_LEVEL_LOW
+        drv_type                                   drv_type_enum                     32    MASTER         
+        write_latency_mode                         latency_mode_enum                 32    CHANNEL_FIRST  
+        read_latency_mode                          latency_mode_enum                 32    CHANNEL_FIRST  
+        clatency                                   axi_latency                       -     @424           
+          wr_latency                               integral                          32    'h0            
+          rd_latency                               integral                          32    'h0            
+      check_ena                                    integral                          32    'h0            
+      cover_ena                                    integral                          32    'h0            
+----------------------------------------------------------------------------------------------------------
+
+UVM_INFO /eda/xilinx/2026.1/Vivado/data/system_verilog/uvm_1.2/xlnx_uvm_package.sv(20867) @ 0: reporter [UVM/COMP/NAMECHECK] This implementation of the component name checks requires DPI to be enabled
+////////////////////////////////////////////////////////////////////////////////////
+// Inter-Transaction Progress: Completed Transaction / Total Transaction
+// Intra-Transaction Progress: Measured Latency / Latency Estimation * 100%
+//
+// RTL Simulation : "Inter-Transaction Progress" ["Intra-Transaction Progress"] @ "Simulation Time"
+////////////////////////////////////////////////////////////////////////////////////
+// RTL Simulation : 0 / 99 [n/a] @ "125000"
+// RTL Simulation : 1 / 99 [n/a] @ "51795000"
+// RTL Simulation : 2 / 99 [n/a] @ "52555000"
+// RTL Simulation : 3 / 99 [n/a] @ "53165000"
+// RTL Simulation : 4 / 99 [n/a] @ "97245000"
+// RTL Simulation : 5 / 99 [n/a] @ "98555000"
+// RTL Simulation : 6 / 99 [n/a] @ "99625000"
+// RTL Simulation : 7 / 99 [n/a] @ "100525000"
+// RTL Simulation : 8 / 99 [n/a] @ "101485000"
+// RTL Simulation : 9 / 99 [n/a] @ "102215000"
+// RTL Simulation : 10 / 99 [n/a] @ "102975000"
+// RTL Simulation : 11 / 99 [n/a] @ "105265000"
+// RTL Simulation : 12 / 99 [n/a] @ "105595000"
+// RTL Simulation : 13 / 99 [n/a] @ "105925000"
+// RTL Simulation : 14 / 99 [n/a] @ "106205000"
+// RTL Simulation : 15 / 99 [n/a] @ "106815000"
+// RTL Simulation : 16 / 99 [n/a] @ "107105000"
+// RTL Simulation : 17 / 99 [n/a] @ "108005000"
+// RTL Simulation : 18 / 99 [n/a] @ "108305000"
+// RTL Simulation : 19 / 99 [n/a] @ "108915000"
+// RTL Simulation : 20 / 99 [n/a] @ "109225000"
+// RTL Simulation : 21 / 99 [n/a] @ "110125000"
+// RTL Simulation : 22 / 99 [n/a] @ "110415000"
+// RTL Simulation : 23 / 99 [n/a] @ "111025000"
+// RTL Simulation : 24 / 99 [n/a] @ "111335000"
+// RTL Simulation : 25 / 99 [n/a] @ "112235000"
+// RTL Simulation : 26 / 99 [n/a] @ "112555000"
+// RTL Simulation : 27 / 99 [n/a] @ "113165000"
+// RTL Simulation : 28 / 99 [n/a] @ "113485000"
+// RTL Simulation : 29 / 99 [n/a] @ "114385000"
+// RTL Simulation : 30 / 99 [n/a] @ "114705000"
+// RTL Simulation : 31 / 99 [n/a] @ "115315000"
+// RTL Simulation : 32 / 99 [n/a] @ "115645000"
+// RTL Simulation : 33 / 99 [n/a] @ "116545000"
+// RTL Simulation : 34 / 99 [n/a] @ "116875000"
+// RTL Simulation : 35 / 99 [n/a] @ "117485000"
+// RTL Simulation : 36 / 99 [n/a] @ "117815000"
+// RTL Simulation : 37 / 99 [n/a] @ "118715000"
+// RTL Simulation : 38 / 99 [n/a] @ "119045000"
+// RTL Simulation : 39 / 99 [n/a] @ "119655000"
+// RTL Simulation : 40 / 99 [n/a] @ "119985000"
+// RTL Simulation : 41 / 99 [n/a] @ "120885000"
+// RTL Simulation : 42 / 99 [n/a] @ "121215000"
+// RTL Simulation : 43 / 99 [n/a] @ "121825000"
+// RTL Simulation : 44 / 99 [n/a] @ "122155000"
+// RTL Simulation : 45 / 99 [n/a] @ "123055000"
+// RTL Simulation : 46 / 99 [n/a] @ "123385000"
+// RTL Simulation : 47 / 99 [n/a] @ "123995000"
+// RTL Simulation : 48 / 99 [n/a] @ "124325000"
+// RTL Simulation : 49 / 99 [n/a] @ "125225000"
+// RTL Simulation : 50 / 99 [n/a] @ "125555000"
+// RTL Simulation : 51 / 99 [n/a] @ "126165000"
+// RTL Simulation : 52 / 99 [n/a] @ "126495000"
+// RTL Simulation : 53 / 99 [n/a] @ "127395000"
+// RTL Simulation : 54 / 99 [n/a] @ "127725000"
+// RTL Simulation : 55 / 99 [n/a] @ "128335000"
+// RTL Simulation : 56 / 99 [n/a] @ "128665000"
+// RTL Simulation : 57 / 99 [n/a] @ "129565000"
+// RTL Simulation : 58 / 99 [n/a] @ "129895000"
+// RTL Simulation : 59 / 99 [n/a] @ "130505000"
+// RTL Simulation : 60 / 99 [n/a] @ "130835000"
+// RTL Simulation : 61 / 99 [n/a] @ "131735000"
+// RTL Simulation : 62 / 99 [n/a] @ "132065000"
+// RTL Simulation : 63 / 99 [n/a] @ "132675000"
+// RTL Simulation : 64 / 99 [n/a] @ "133005000"
+// RTL Simulation : 65 / 99 [n/a] @ "133905000"
+// RTL Simulation : 66 / 99 [n/a] @ "134235000"
+// RTL Simulation : 67 / 99 [n/a] @ "134845000"
+// RTL Simulation : 68 / 99 [n/a] @ "135175000"
+// RTL Simulation : 69 / 99 [n/a] @ "136075000"
+// RTL Simulation : 70 / 99 [n/a] @ "136405000"
+// RTL Simulation : 71 / 99 [n/a] @ "137015000"
+// RTL Simulation : 72 / 99 [n/a] @ "137365000"
+// RTL Simulation : 73 / 99 [n/a] @ "138265000"
+// RTL Simulation : 74 / 99 [n/a] @ "138685000"
+// RTL Simulation : 75 / 99 [n/a] @ "139295000"
+// RTL Simulation : 76 / 99 [n/a] @ "139785000"
+// RTL Simulation : 77 / 99 [n/a] @ "140685000"
+// RTL Simulation : 78 / 99 [n/a] @ "141185000"
+// RTL Simulation : 79 / 99 [n/a] @ "141795000"
+// RTL Simulation : 80 / 99 [n/a] @ "142085000"
+// RTL Simulation : 81 / 99 [n/a] @ "142985000"
+// RTL Simulation : 82 / 99 [n/a] @ "143295000"
+// RTL Simulation : 83 / 99 [n/a] @ "143905000"
+// RTL Simulation : 84 / 99 [n/a] @ "144225000"
+// RTL Simulation : 85 / 99 [n/a] @ "145125000"
+// RTL Simulation : 86 / 99 [n/a] @ "145455000"
+// RTL Simulation : 87 / 99 [n/a] @ "146065000"
+// RTL Simulation : 88 / 99 [n/a] @ "146435000"
+// RTL Simulation : 89 / 99 [n/a] @ "147335000"
+// RTL Simulation : 90 / 99 [n/a] @ "148045000"
+// RTL Simulation : 91 / 99 [n/a] @ "148655000"
+// RTL Simulation : 92 / 99 [n/a] @ "149405000"
+// RTL Simulation : 93 / 99 [n/a] @ "150305000"
+// RTL Simulation : 94 / 99 [n/a] @ "151065000"
+// RTL Simulation : 95 / 99 [n/a] @ "151675000"
+// RTL Simulation : 96 / 99 [n/a] @ "152455000"
+// RTL Simulation : 97 / 99 [n/a] @ "153355000"
+// RTL Simulation : 98 / 99 [n/a] @ "154285000"
+// RTL Simulation : 99 / 99 [n/a] @ "154895000"
+////////////////////////////////////////////////////////////////////////////////////
+$finish called at time : 155065 ns : File "/eda/xilinx/2026.1/Vivado/data/system_verilog/uvm_1.2/xlnx_uvm_package.sv" Line 18699
+run: Time (s): cpu = 00:00:05 ; elapsed = 00:00:07 . Memory (MB): peak = 3385.613 ; gain = 0.000 ; free physical = 239315 ; free virtual = 1157304
+## quit
+INFO: xsimkernel Simulation Memory Usage: 718524 KB (Peak: 784060 KB), Simulation CPU Usage: 6640 ms
+INFO: [Common 17-206] Exiting xsim at Wed Nov  4 21:58:26 2026...
+INFO: [COSIM 212-316] Starting C post checking ...
+ACTIVATION 0 performance_64x64_k2 PASS outputs=1026 consumed=4104 status=0,0,0
+ACTIVATION 1 hand_a PASS outputs=6 consumed=24 status=0,0,0
+ACTIVATION 2 hand_b_smallest_negative_tied PASS outputs=3 consumed=12 status=0,0,0
+ACTIVATION 3 largest_k4 PASS outputs=258 consumed=4104 status=0,0,0
+ACTIVATION 4 rectangular_k2 PASS outputs=17 consumed=68 status=0,0,0
+ACTIVATION 5 rectangular_k4 PASS outputs=5 consumed=56 status=0,0,0
+ACTIVATION 6 all_negative_k4 PASS outputs=4 consumed=40 status=0,0,0
+ACTIVATION 7 all_equal_minimum PASS outputs=10 consumed=40 status=0,0,0
+ACTIVATION 8 all_equal_maximum PASS outputs=3 consumed=24 status=0,0,0
+ACTIVATION 9 signed_extremes_poisoned_padding PASS outputs=6 consumed=24 status=0,0,0
+ACTIVATION 10 multiple_compute_changed_every_field PASS outputs=17 consumed=132 status=0,0,0
+ACTIVATION 11 end_only_ignored_invalid_fields PASS outputs=0 consumed=4 status=0,0,0
+ACTIVATION 12 end_only_leaves_queued_input PASS outputs=0 consumed=4 status=0,0,0
+ACTIVATION 13 header_early_beat0 PASS outputs=0 consumed=1 status=1,1,2415919104
+ACTIVATION 14 recovery_after_header_early_beat0 PASS outputs=3 consumed=12 status=0,0,0
+ACTIVATION 15 header_early_beat1 PASS outputs=0 consumed=2 status=1,1,2415919105
+ACTIVATION 16 recovery_after_header_early_beat1 PASS outputs=4 consumed=40 status=0,0,0
+ACTIVATION 17 header_early_beat2 PASS outputs=0 consumed=3 status=1,1,2415919106
+ACTIVATION 18 recovery_after_header_early_beat2 PASS outputs=3 consumed=12 status=0,0,0
+ACTIVATION 19 header_missing_final_tlast PASS outputs=0 consumed=4 status=1,1,2415919107
+ACTIVATION 20 recovery_after_header_missing_final_tlast PASS outputs=4 consumed=40 status=0,0,0
+ACTIVATION 21 end_header_early PASS outputs=0 consumed=2 status=1,1,2415919108
+ACTIVATION 22 recovery_after_end_header_early PASS outputs=3 consumed=12 status=0,0,0
+ACTIVATION 23 end_header_missing PASS outputs=0 consumed=4 status=1,1,2415919109
+ACTIVATION 24 recovery_after_end_header_missing PASS outputs=4 consumed=40 status=0,0,0
+ACTIVATION 25 unknown_opcode_2 PASS outputs=0 consumed=4 status=1,2,2432696326
+ACTIVATION 26 recovery_after_unknown_opcode_2 PASS outputs=3 consumed=12 status=0,0,0
+ACTIVATION 27 unknown_opcode_ffffffff PASS outputs=0 consumed=4 status=1,2,2432696327
+ACTIVATION 28 recovery_after_unknown_opcode_ffffffff PASS outputs=4 consumed=40 status=0,0,0
+ACTIVATION 29 unknown_opcode_10001 PASS outputs=0 consumed=4 status=1,2,2432696328
+ACTIVATION 30 recovery_after_unknown_opcode_10001 PASS outputs=3 consumed=12 status=0,0,0
+ACTIVATION 31 invalid_h_zero PASS outputs=0 consumed=4 status=1,3,2449473536
+ACTIVATION 32 recovery_after_invalid_h_zero PASS outputs=4 consumed=40 status=0,0,0
+ACTIVATION 33 invalid_h_one PASS outputs=0 consumed=4 status=1,3,2449473537
+ACTIVATION 34 recovery_after_invalid_h_one PASS outputs=3 consumed=12 status=0,0,0
+ACTIVATION 35 invalid_h_65 PASS outputs=0 consumed=4 status=1,3,2449473538
+ACTIVATION 36 recovery_after_invalid_h_65 PASS outputs=4 consumed=40 status=0,0,0
+ACTIVATION 37 invalid_h_max_u16 PASS outputs=0 consumed=4 status=1,3,2449473539
+ACTIVATION 38 recovery_after_invalid_h_max_u16 PASS outputs=3 consumed=12 status=0,0,0
+ACTIVATION 39 invalid_w_zero PASS outputs=0 consumed=4 status=1,3,2449473540
+ACTIVATION 40 recovery_after_invalid_w_zero PASS outputs=4 consumed=40 status=0,0,0
+ACTIVATION 41 invalid_w_one PASS outputs=0 consumed=4 status=1,3,2449473541
+ACTIVATION 42 recovery_after_invalid_w_one PASS outputs=3 consumed=12 status=0,0,0
+ACTIVATION 43 invalid_w_65 PASS outputs=0 consumed=4 status=1,3,2449473542
+ACTIVATION 44 recovery_after_invalid_w_65 PASS outputs=4 consumed=40 status=0,0,0
+ACTIVATION 45 invalid_w_max_u16 PASS outputs=0 consumed=4 status=1,3,2449473543
+ACTIVATION 46 recovery_after_invalid_w_max_u16 PASS outputs=3 consumed=12 status=0,0,0
+ACTIVATION 47 invalid_k_zero PASS outputs=0 consumed=4 status=1,3,2449473544
+ACTIVATION 48 recovery_after_invalid_k_zero PASS outputs=4 consumed=40 status=0,0,0
+ACTIVATION 49 invalid_k_one PASS outputs=0 consumed=4 status=1,3,2449473545
+ACTIVATION 50 recovery_after_invalid_k_one PASS outputs=3 consumed=12 status=0,0,0
+ACTIVATION 51 invalid_k_three PASS outputs=0 consumed=4 status=1,3,2449473546
+ACTIVATION 52 recovery_after_invalid_k_three PASS outputs=4 consumed=40 status=0,0,0
+ACTIVATION 53 invalid_k_five PASS outputs=0 consumed=4 status=1,3,2449473547
+ACTIVATION 54 recovery_after_invalid_k_five PASS outputs=3 consumed=12 status=0,0,0
+ACTIVATION 55 invalid_k_max_u32 PASS outputs=0 consumed=4 status=1,3,2449473548
+ACTIVATION 56 recovery_after_invalid_k_max_u32 PASS outputs=4 consumed=40 status=0,0,0
+ACTIVATION 57 invalid_k_large_low_bits_valid PASS outputs=0 consumed=4 status=1,3,2449473549
+ACTIVATION 58 recovery_after_invalid_k_large_low_bits_valid PASS outputs=3 consumed=12 status=0,0,0
+ACTIVATION 59 invalid_k_exceeds_h PASS outputs=0 consumed=4 status=1,3,2449473550
+ACTIVATION 60 recovery_after_invalid_k_exceeds_h PASS outputs=4 consumed=40 status=0,0,0
+ACTIVATION 61 invalid_k_exceeds_w PASS outputs=0 consumed=4 status=1,3,2449473551
+ACTIVATION 62 recovery_after_invalid_k_exceeds_w PASS outputs=3 consumed=12 status=0,0,0
+ACTIVATION 63 invalid_h_not_divisible_k4 PASS outputs=0 consumed=4 status=1,3,2449473552
+ACTIVATION 64 recovery_after_invalid_h_not_divisible_k4 PASS outputs=4 consumed=40 status=0,0,0
+ACTIVATION 65 invalid_w_not_divisible_k4 PASS outputs=0 consumed=4 status=1,3,2449473553
+ACTIVATION 66 recovery_after_invalid_w_not_divisible_k4 PASS outputs=3 consumed=12 status=0,0,0
+ACTIVATION 67 invalid_h_not_divisible_k2 PASS outputs=0 consumed=4 status=1,3,2449473554
+ACTIVATION 68 recovery_after_invalid_h_not_divisible_k2 PASS outputs=4 consumed=40 status=0,0,0
+ACTIVATION 69 invalid_w_not_divisible_k2 PASS outputs=0 consumed=4 status=1,3,2449473555
+ACTIVATION 70 recovery_after_invalid_w_not_divisible_k2 PASS outputs=3 consumed=12 status=0,0,0
+ACTIVATION 71 payload_early_beat0 PASS outputs=0 consumed=5 status=1,4,2466250752
+ACTIVATION 72 recovery_after_payload_early_beat0 PASS outputs=4 consumed=40 status=0,0,0
+ACTIVATION 73 payload_early_beat7 PASS outputs=0 consumed=12 status=1,4,2466250759
+ACTIVATION 74 recovery_after_payload_early_beat7 PASS outputs=3 consumed=12 status=0,0,0
+ACTIVATION 75 payload_early_beat14 PASS outputs=0 consumed=19 status=1,4,2466250766
+ACTIVATION 76 recovery_after_payload_early_beat14 PASS outputs=4 consumed=40 status=0,0,0
+ACTIVATION 77 payload_missing_final_tlast PASS outputs=0 consumed=20 status=1,5,2466250768
+ACTIVATION 78 recovery_after_payload_missing_final_tlast PASS outputs=3 consumed=12 status=0,0,0
+ACTIVATION 79 precedence_early_header_over_unknown_invalid PASS outputs=0 consumed=2 status=1,1,2483027968
+ACTIVATION 80 recovery_after_precedence_early_header_over_unknown_invalid PASS outputs=4 consumed=40 status=0,0,0
+ACTIVATION 81 precedence_missing_header_over_unknown_invalid PASS outputs=0 consumed=4 status=1,1,2483027969
+ACTIVATION 82 recovery_after_precedence_missing_header_over_unknown_invalid PASS outputs=3 consumed=12 status=0,0,0
+ACTIVATION 83 precedence_unknown_over_invalid PASS outputs=0 consumed=4 status=1,2,2483027970
+ACTIVATION 84 recovery_after_precedence_unknown_over_invalid PASS outputs=4 consumed=40 status=0,0,0
+ACTIVATION 85 precedence_invalid_over_early_payload PASS outputs=0 consumed=4 status=1,3,2483027971
+ACTIVATION 86 recovery_after_precedence_invalid_over_early_payload PASS outputs=3 consumed=12 status=0,0,0
+ACTIVATION 87 precedence_early_payload_over_missing_final PASS outputs=0 consumed=7 status=1,4,2483027972
+ACTIVATION 88 recovery_after_precedence_early_payload_over_missing_final PASS outputs=4 consumed=40 status=0,0,0
+ACTIVATION 89 after_success_header_early_beat0 PASS outputs=6 consumed=21 status=1,1,2415919104
+ACTIVATION 90 recovery_after_after_success_header_early_beat0 PASS outputs=3 consumed=12 status=0,0,0
+ACTIVATION 91 after_success_unknown_opcode_2 PASS outputs=6 consumed=24 status=1,2,2432696326
+ACTIVATION 92 recovery_after_after_success_unknown_opcode_2 PASS outputs=4 consumed=40 status=0,0,0
+ACTIVATION 93 after_success_invalid_h_zero PASS outputs=6 consumed=24 status=1,3,2449473536
+ACTIVATION 94 recovery_after_after_success_invalid_h_zero PASS outputs=3 consumed=12 status=0,0,0
+ACTIVATION 95 after_success_payload_early_beat0 PASS outputs=6 consumed=25 status=1,4,2466250752
+ACTIVATION 96 recovery_after_after_success_payload_early_beat0 PASS outputs=4 consumed=40 status=0,0,0
+ACTIVATION 97 after_success_payload_missing_final_tlast PASS outputs=6 consumed=40 status=1,5,2466250768
+ACTIVATION 98 recovery_after_after_success_payload_missing_final_tlast PASS outputs=3 consumed=12 status=0,0,0
+ALL_ACTIVATIONS 99 FAILURES 0
+INFO [HLS SIM]: The maximum depth reached by any hls::stream() instance in the design is 4104
+INFO: [COSIM 212-1000] *** C/RTL co-simulation finished: PASS ***
+INFO: [HLS 200-2161] Finished Command cosim_design Elapsed time: 00:00:58; Allocated memory: 11.855 MB.
+INFO: [HLS 200-112] Total CPU user time: 177.33 seconds. Total CPU system time: 7.19 seconds. Total elapsed time: 61.68 seconds; peak allocated memory: 356.758 MB.
+INFO: [vitis-run 60-791] Total elapsed time: 0h 1m 3s
+INFO: [vitis-run 60-1662] Stopping dispatch session having empty uuid.
+Vitis HLS exit status: 0
+Build runner exit status: 0

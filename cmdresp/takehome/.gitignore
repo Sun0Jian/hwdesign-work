@@ -1,0 +1,8 @@
+# Reproducible tool working directories; durable reports are under evidence/.
+maxpool_prj/
+logs/
+.Xil/
+__pycache__/
+*.pyc
+vcd/
+evidence/rtl_stream_*/xsim.dir/

@@ -1,0 +1,39 @@
+{
+  "stage": "generate",
+  "started_utc": "2026-11-05T02:37:22.429610+00:00",
+  "root": "/home/js12359/hwdesign-work/cmdresp/takehome",
+  "part": "xc7z020clg484-1",
+  "clock_ns": 10,
+  "command": [
+    "/home/js12359/hwdesign-work/cmdresp/takehome/maxpool_build.py",
+    "--stage",
+    "generate"
+  ],
+  "python": "/home/js12359/hwdesign-work/.venv/bin/python",
+  "waveflow": "/home/js12359/waveflow/waveflow/__init__.py",
+  "source_sha256": {
+    "prompt.md": "2059c2aa3859ff06f0fa42cad4989f72feda3e930a609cc5b343b463819199a8",
+    "maxpool_hw.py": "33a83da05b12a30bea21efbb11e13f4256ab2354882a480271cc67ce448ba1bd",
+    "maxpool_build.py": "b32b86c7cf9883dfb17eafe8441269abe74ffcd4730bca18ed8e498d32b3bc08",
+    "run.tcl": "ecf4fcff3e6fba6fb0db39895be9f6984a530d6b0c9b06d1b9be58b8eb1a303c",
+    "maxpool_body_impl.tpp": "2d320f50ee861ec153974810d18632ab10337e37bb714ad9c677671724a46b81",
+    "maxpool_tb.cpp": "630cb9eabac875e4df25f7790f03493bbd4941562296c9ce95a2f622bbace485",
+    "maxpool_model.py": "679a0dec7225ae847b622e821420d05b1d47c2cd3b1d8d44e06884f85c1d37e9",
+    "data/scenarios.txt": "6dc42d9fb967056c6e9d8c879a8361206da0197760c6c4cbb6064baf03ba1331",
+    "data/scenarios.json": "a21834f0a645ddd7975655b039ac45312bf01e4ffb4eb80aa471d3052e77019d",
+    "gen/maxpool.hpp": "05703d91a84872b68bbefc7c1cff0931f16d577f380cce654b8211987bd38bec",
+    "gen/maxpool.cpp": "2448f2f993ee59793bdb5876c984b2343923bf604bedda49ff370748da374885",
+    "include/streamutils_hls.h": "915166144eba5bcd031ca51bd7528e71dcb152a4ccf42e4210e99f1fe036326a",
+    "include/bundle_tb.h": "d411210527e0885da5b6e586baf48aa6a52a451ce0225d9040bdd800fcfc1036",
+    "include/streamutils_tb.h": "efb28292ddc5462f23cf562c9ec0877daf28ea52bafbe132c58429e03a04a0e2",
+    "include/streamutils.cpp": "bc795c19fd50ce9b0ef8d2ca21a7088c224deaf22f45b93229118eb4a37da80b"
+  },
+  "waveflow_source_sha256": {
+    "/home/js12359/waveflow/waveflow/hw/hw_hostactivated.py": "1de9690fe443efe60930cc328042fa01d2f921e1b1768e281eeee0838e74d485",
+    "/home/js12359/waveflow/waveflow/build/hwcodegen_steps.py": "1d295da00bbf3b9d471ff86eb07075bcad53e941baaa3aeffa48740a098c03ed",
+    "/home/js12359/waveflow/waveflow/build/streamutils.py": "edc87e7bf5104c9518f77683bc24ed0d65152097b1cbe77325a28cc5b3264958"
+  },
+  "hls_evidence": [],
+  "finished_utc": "2026-11-05T02:37:22.501995+00:00",
+  "exit_status": 0
+}

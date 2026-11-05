@@ -1,0 +1,22 @@
+Evidence directory: /home/js12359/hwdesign-work/cmdresp/takehome/evidence/generate_002
+Waveflow stream helpers: StreamUtilsStep: BuildResult(success=True, message='', artifacts={'hls': FileArtifact(path=PosixPath('/home/js12359/hwdesign-work/cmdresp/takehome/include/streamutils_hls.h'), timestamp=1793846187.6043105), 'tb': FileArtifact(path=PosixPath('/home/js12359/hwdesign-work/cmdresp/takehome/include/streamutils_tb.h'), timestamp=1793846187.605446), 'bundle_tb': FileArtifact(path=PosixPath('/home/js12359/hwdesign-work/cmdresp/takehome/include/bundle_tb.h'), timestamp=1793846187.6065876), 'cpp': FileArtifact(path=PosixPath('/home/js12359/hwdesign-work/cmdresp/takehome/include/streamutils.cpp'), timestamp=1793846187.6076543)}, timestamp=1793846187.6076677, skipped=False, elapsed_seconds=0.004753042012453079, traceback=None)
+Traceback (most recent call last):
+  File "/home/js12359/hwdesign-work/cmdresp/takehome/maxpool_build.py", line 218, in main
+    generate()
+  File "/home/js12359/hwdesign-work/cmdresp/takehome/maxpool_build.py", line 111, in generate
+    dag.add(HlsCodegenStep(
+            ^^^^^^^^^^^^^^^
+  File "<string>", line 10, in __init__
+  File "/home/js12359/waveflow/waveflow/build/hwcodegen_steps.py", line 69, in __post_init__
+    self._hook_info = self._discover_hooks()
+                      ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/js12359/waveflow/waveflow/build/hwcodegen_steps.py", line 78, in _discover_hooks
+    tree = extract_kernel(comp)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/js12359/waveflow/waveflow/build/hwcodegen.py", line 1945, in extract_kernel
+    return body_only_tree(comp)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/js12359/waveflow/waveflow/build/hwgen.py", line 835, in body_only_tree
+    raise SynthesisError(
+waveflow.build.hwcodegen.SynthesisError: MaxPoolAccel.cpp_body = 'body', but it has no method 'body'. Define it: its Python body is the model the simulation runs, and its C++ body is the hand-written .tpp/.cpp the generated top calls.
+Build runner exit status: 1

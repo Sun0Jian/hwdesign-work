@@ -1,0 +1,196 @@
+
+
+================================================================
+== Vitis HLS Report for 'maxpool_Pipeline_read_header'
+================================================================
+* Date:           Wed Nov  4 21:56:07 2026
+
+* Version:        2026.1 (Build 6493734 on Jun 16 2026)
+* Project:        maxpool_prj
+* Solution:       solution1 (Vivado IP Flow Target)
+* Product family: zynq
+* Target device:  xc7z020-clg484-1
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+----------+----------+------------+
+    |  Clock |  Target  | Estimated| Uncertainty|
+    +--------+----------+----------+------------+
+    |ap_clk  |  10.00 ns|  4.216 ns|     2.70 ns|
+    +--------+----------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+-----------+-----------+-----+-----+---------+
+    |  Latency (cycles) |   Latency (absolute)  |  Interval | Pipeline|
+    |   min   |   max   |    min    |    max    | min | max |   Type  |
+    +---------+---------+-----------+-----------+-----+-----+---------+
+    |        3|        8|  30.000 ns|  80.000 ns|    3|    8|       no|
+    +---------+---------+-----------+-----------+-----+-----+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        +---------------+---------+---------+----------+-----------+-----------+-------+----------+
+        |               |  Latency (cycles) | Iteration|  Initiation Interval  |  Trip |          |
+        |   Loop Name   |   min   |   max   |  Latency |  achieved |   target  | Count | Pipelined|
+        +---------------+---------+---------+----------+-----------+-----------+-------+----------+
+        |- read_header  |        1|        5|         2|          1|        N/A|  0 ~ 4|       yes|
+        +---------------+---------+---------+----------+-----------+-----------+-------+----------+
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++-----------------+---------+-----+--------+-------+-----+
+|       Name      | BRAM_18K| DSP |   FF   |  LUT  | URAM|
++-----------------+---------+-----+--------+-------+-----+
+|DSP              |        -|    -|       -|      -|    -|
+|Expression       |        -|    -|       0|    111|    -|
+|FIFO             |        -|    -|       -|      -|    -|
+|Instance         |        -|    -|       -|      -|    -|
+|Memory           |        -|    -|       -|      -|    -|
+|Multiplexer      |        -|    -|       0|    125|    -|
+|Register         |        -|    -|     273|      -|    -|
++-----------------+---------+-----+--------+-------+-----+
+|Total            |        0|    0|     273|    236|    0|
++-----------------+---------+-----+--------+-------+-----+
+|Available        |      280|  220|  106400|  53200|    0|
++-----------------+---------+-----+--------+-------+-----+
+|Utilization (%)  |        0|    0|      ~0|     ~0|    0|
++-----------------+---------+-----+--------+-------+-----+
+
++ Detail: 
+    * Instance: 
+    N/A
+
+    * DSP: 
+    N/A
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    +----------------------------------+----------+----+---+----+------------+------------+
+    |           Variable Name          | Operation| DSP| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +----------------------------------+----------+----+---+----+------------+------------+
+    |add_ln50_fu_267_p2                |         +|   0|  0|  11|           3|           1|
+    |ap_block_pp0_stage0_01001         |       and|   0|  0|   2|           1|           1|
+    |ap_block_state2_pp0_stage0_iter0  |       and|   0|  0|   2|           1|           1|
+    |ap_predicate_tran3to4_state2      |       and|   0|  0|   2|           1|           1|
+    |icmp_ln50_fu_261_p2               |      icmp|   0|  0|  13|           3|           4|
+    |icmp_ln53_fu_288_p2               |      icmp|   0|  0|  11|           3|           2|
+    |or_ln53_fu_343_p2                 |        or|   0|  0|   2|           1|           1|
+    |select_ln53_1_fu_336_p3           |    select|   0|  0|  32|           1|           1|
+    |select_ln53_fu_329_p3             |    select|   0|  0|  32|           1|          32|
+    |ap_enable_pp0                     |       xor|   0|  0|   2|           1|           2|
+    |xor_ln53_fu_294_p2                |       xor|   0|  0|   2|           1|           1|
+    +----------------------------------+----------+----+---+----+------------+------------+
+    |Total                             |          |   0|  0| 111|          17|          47|
+    +----------------------------------+----------+----+---+----+------------+------------+
+
+    * Multiplexer: 
+    +----------------------------------------+----+-----------+-----+-----------+
+    |                  Name                  | LUT| Input Size| Bits| Total Bits|
+    +----------------------------------------+----+-----------+-----+-----------+
+    |ap_NS_fsm                               |  25|          5|    1|          5|
+    |ap_enable_reg_pp0_iter1                 |   9|          2|    1|          2|
+    |ap_phi_mux_UnifiedRetVal_phi_fu_231_p4  |   9|          2|    1|          2|
+    |ap_return                               |   9|          2|    1|          2|
+    |cond_i1338_fu_104                       |   9|          2|   32|         64|
+    |cond_i1338_out                          |  14|          3|   32|         96|
+    |empty_26_reg_216                        |   9|          2|    1|          2|
+    |i_fu_108                                |   9|          2|    3|          6|
+    |p_0_0_01392337_fu_100                   |   9|          2|   32|         64|
+    |p_0_0_01392337_out                      |  14|          3|   32|         96|
+    |s_in_TDATA_blk_n                        |   9|          2|    1|          2|
+    +----------------------------------------+----+-----------+-----+-----------+
+    |Total                                   | 125|         27|  137|        341|
+    +----------------------------------------+----+-----------+-----+-----------+
+
+    * Register: 
+    +-------------------------------------------+----+----+-----+-----------+
+    |                    Name                   | FF | LUT| Bits| Const Bits|
+    +-------------------------------------------+----+----+-----+-----------+
+    |UnifiedRetVal_reg_227                      |   1|   0|    1|          0|
+    |ap_CS_fsm                                  |   4|   0|    4|          0|
+    |ap_block_pp0_stage0_subdone_grp0_done_reg  |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter0                    |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter1                    |   1|   0|    1|          0|
+    |ap_exit_tran_regpp0                        |   1|   0|    2|          1|
+    |ap_return_preg                             |   1|   0|    1|          0|
+    |cond_i1338_fu_104                          |  32|   0|   32|          0|
+    |cond_i1338_load_1_reg_430                  |  32|   0|   32|          0|
+    |empty_26_reg_216                           |   1|   0|    1|          0|
+    |header_fu_112                              |  32|   0|   32|          0|
+    |i_fu_108                                   |   3|   0|    3|          0|
+    |icmp_ln50_reg_411                          |   1|   0|    1|          0|
+    |or_ln53_reg_445                            |   1|   0|    1|          0|
+    |p_0_0_01392337_fu_100                      |  32|   0|   32|          0|
+    |p_0_0_01392337_load_1_reg_425              |  32|   0|   32|          0|
+    |p_0_0_0153_phi_fu_96                       |  32|   0|   32|          0|
+    |select_ln53_1_reg_440                      |  32|   0|   32|          0|
+    |select_ln53_reg_435                        |  32|   0|   32|          0|
+    |xor_ln53_reg_418                           |   1|   0|    1|          0|
+    +-------------------------------------------+----+----+-----+-----------+
+    |Total                                      | 273|   0|  274|          1|
+    +-------------------------------------------+----+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++---------------------------+-----+-----+------------+------------------------------+--------------+
+|         RTL Ports         | Dir | Bits|  Protocol  |         Source Object        |    C Type    |
++---------------------------+-----+-----+------------+------------------------------+--------------+
+|ap_clk                     |   in|    1|  ap_ctrl_hs|  maxpool_Pipeline_read_header|  return value|
+|ap_rst                     |   in|    1|  ap_ctrl_hs|  maxpool_Pipeline_read_header|  return value|
+|ap_start                   |   in|    1|  ap_ctrl_hs|  maxpool_Pipeline_read_header|  return value|
+|ap_done                    |  out|    1|  ap_ctrl_hs|  maxpool_Pipeline_read_header|  return value|
+|ap_idle                    |  out|    1|  ap_ctrl_hs|  maxpool_Pipeline_read_header|  return value|
+|ap_ready                   |  out|    1|  ap_ctrl_hs|  maxpool_Pipeline_read_header|  return value|
+|ap_return                  |  out|    1|  ap_ctrl_hs|  maxpool_Pipeline_read_header|  return value|
+|empty                      |   in|    1|     ap_none|                         empty|        scalar|
+|cond_i14                   |   in|   32|     ap_none|                      cond_i14|        scalar|
+|p_0_0_013924               |   in|   32|     ap_none|                  p_0_0_013924|        scalar|
+|header_3                   |  out|   32|      ap_vld|                      header_3|       pointer|
+|header_3_ap_vld            |  out|    1|      ap_vld|                      header_3|       pointer|
+|header_2                   |  out|   32|      ap_vld|                      header_2|       pointer|
+|header_2_ap_vld            |  out|    1|      ap_vld|                      header_2|       pointer|
+|header_1                   |  out|   32|      ap_vld|                      header_1|       pointer|
+|header_1_ap_vld            |  out|    1|      ap_vld|                      header_1|       pointer|
+|s_in_TDATA                 |   in|   32|        axis|                 s_in_V_data_V|       pointer|
+|s_in_TVALID                |   in|    1|        axis|                 s_in_V_data_V|       pointer|
+|s_in_TREADY                |  out|    1|        axis|                 s_in_V_last_V|       pointer|
+|s_in_TLAST                 |   in|    1|        axis|                 s_in_V_last_V|       pointer|
+|s_in_TKEEP                 |   in|    4|        axis|                 s_in_V_keep_V|       pointer|
+|s_in_TSTRB                 |   in|    4|        axis|                 s_in_V_strb_V|       pointer|
+|p_out                      |  out|    1|      ap_vld|                         p_out|       pointer|
+|p_out_ap_vld               |  out|    1|      ap_vld|                         p_out|       pointer|
+|cond_i1338_out             |  out|   32|      ap_vld|                cond_i1338_out|       pointer|
+|cond_i1338_out_ap_vld      |  out|    1|      ap_vld|                cond_i1338_out|       pointer|
+|p_0_0_01392337_out         |  out|   32|      ap_vld|            p_0_0_01392337_out|       pointer|
+|p_0_0_01392337_out_ap_vld  |  out|    1|      ap_vld|            p_0_0_01392337_out|       pointer|
+|p_0_0_0153_phi_out         |  out|   32|      ap_vld|            p_0_0_0153_phi_out|       pointer|
+|p_0_0_0153_phi_out_ap_vld  |  out|    1|      ap_vld|            p_0_0_0153_phi_out|       pointer|
+|select_ln53_out            |  out|   32|      ap_vld|               select_ln53_out|       pointer|
+|select_ln53_out_ap_vld     |  out|    1|      ap_vld|               select_ln53_out|       pointer|
+|select_ln53_1_out          |  out|   32|      ap_vld|             select_ln53_1_out|       pointer|
+|select_ln53_1_out_ap_vld   |  out|    1|      ap_vld|             select_ln53_1_out|       pointer|
+|or_ln53_out                |  out|    1|      ap_vld|                   or_ln53_out|       pointer|
+|or_ln53_out_ap_vld         |  out|    1|      ap_vld|                   or_ln53_out|       pointer|
++---------------------------+-----+-----+------------+------------------------------+--------------+
+

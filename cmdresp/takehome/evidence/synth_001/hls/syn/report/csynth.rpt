@@ -1,0 +1,414 @@
+
+
+================================================================
+== Synthesis Summary Report of 'maxpool'
+================================================================
++ General Information: 
+    * Date:           Wed Nov  4 21:41:57 2026
+    * Version:        2026.1 (Build 6493734 on Jun 16 2026)
+    * Project:        maxpool_prj
+    * Solution:       solution1 (Vivado IP Flow Target)
+    * Product family: zynq
+    * Target device:  xc7z020-clg484-1
+    
+
+* Performance & Resource Estimates: 
++-----------------------------------+--------+---------------+----------+---------+------+----------+---------+-----------+-------+---------+---------+-----------+------------+-----+
+|              Modules              |  Issue |               | Iteration|         | Trip |          |       Latency       |       |         |         |           |            |     |
+|              & Loops              |  Type  | Violation Type|  Latency | Interval| Count| Pipelined| (cycles)|    (ns)   | Slack |  BRAM   |   DSP   |     FF    |     LUT    | URAM|
++-----------------------------------+--------+---------------+----------+---------+------+----------+---------+-----------+-------+---------+---------+-----------+------------+-----+
+|+ maxpool                          |  Timing|              -|         -|        -|     -|        no|        -|          -|  -1.96|  16 (5%)|  2 (~0%)|  1555 (1%)|  5331 (10%)|    -|
+| o VITIS_LOOP_41_1                 |       -|              -|      5147|        -|     -|        no|        -|          -|   7.30|        -|        -|          -|           -|    -|
+|  + maxpool_Pipeline_read_header   |       -|              -|         -|        8|     -|        no|        8|     80.000|   3.08|        -|        -|  273 (~0%)|   236 (~0%)|    -|
+|   o read_header                   |       -|              -|         2|        1|     4|       yes|        5|     50.000|   7.30|        -|        -|          -|           -|    -|
+|  + maxpool_Pipeline_buffer_image  |  Timing|              -|         -|     4098|     -|       yes|     4098|  4.098e+04|  -0.37|        -|        -|   50 (~0%)|   296 (~0%)|    -|
+|   o buffer_image                  |       -|              -|         1|        1|  4096|       yes|     4096|  4.096e+04|   7.30|        -|        -|          -|           -|    -|
+|  + maxpool_Pipeline_emit_windows  |       -|              -|         -|     1031|     -|       yes|     1031|  1.031e+04|   0.26|        -|        -|  484 (~0%)|   3417 (6%)|    -|
+|   o emit_windows                  |       -|              -|         7|        1|  1024|       yes|     1029|  1.029e+04|   7.30|        -|        -|          -|           -|    -|
++-----------------------------------+--------+---------------+----------+---------+------+----------+---------+-----------+-------+---------+---------+-----------+------------+-----+
+    Name Prefix: '+' for module, 'o' for loop, '*' for dataflow
+
+
+================================================================
+== HW Interfaces
+================================================================
+* S_AXILITE Interfaces
++---------------+------------+---------------+--------+----------+
+| Interface     | Data Width | Address Width | Offset | Register |
++---------------+------------+---------------+--------+----------+
+| s_axi_control | 32         | 6             | 16     | 0        |
++---------------+------------+---------------+--------+----------+
+
+* S_AXILITE Registers
++---------------+------------------+--------+-------+--------+----------------------------------+----------------------------------------------------------------------+
+| Interface     | Register         | Offset | Width | Access | Description                      | Bit Fields                                                           |
++---------------+------------------+--------+-------+--------+----------------------------------+----------------------------------------------------------------------+
+| s_axi_control | CTRL             | 0x00   | 32    | RW     | Control signals                  | 0=AP_START 1=AP_DONE 2=AP_IDLE 3=AP_READY 7=AUTO_RESTART 9=INTERRUPT |
+| s_axi_control | GIER             | 0x04   | 32    | RW     | Global Interrupt Enable Register | 0=Enable                                                             |
+| s_axi_control | IP_IER           | 0x08   | 32    | RW     | IP Interrupt Enable Register     | 0=CHAN0_INT_EN 1=CHAN1_INT_EN                                        |
+| s_axi_control | IP_ISR           | 0x0c   | 32    | RW     | IP Interrupt Status Register     | 0=CHAN0_INT_ST 1=CHAN1_INT_ST                                        |
+| s_axi_control | halted           | 0x10   | 32    | R      | Data signal of halted            |                                                                      |
+| s_axi_control | halted_ctrl      | 0x14   | 32    | R      | Control signal of halted         | 0=halted_ap_vld                                                      |
+| s_axi_control | error            | 0x20   | 32    | R      | Data signal of error             |                                                                      |
+| s_axi_control | error_ctrl       | 0x24   | 32    | R      | Control signal of error          | 0=error_ap_vld                                                       |
+| s_axi_control | error_tx_id      | 0x30   | 32    | R      | Data signal of error_tx_id       |                                                                      |
+| s_axi_control | error_tx_id_ctrl | 0x34   | 32    | R      | Control signal of error_tx_id    | 0=error_tx_id_ap_vld                                                 |
++---------------+------------------+--------+-------+--------+----------------------------------+----------------------------------------------------------------------+
+
+* AXIS
++-----------+-----------+---------------+-------+-------+-------+--------+-------+--------+
+| Interface | Direction | Register Mode | TDATA | TKEEP | TLAST | TREADY | TSTRB | TVALID |
++-----------+-----------+---------------+-------+-------+-------+--------+-------+--------+
+| m_out     | out       | both          | 32    | 4     | 1     | 1      | 4     | 1      |
+| s_in      | in        | off           | 32    | 4     | 1     | 1      | 4     | 1      |
++-----------+-----------+---------------+-------+-------+-------+--------+-------+--------+
+
+* TOP LEVEL CONTROL
++-----------+------------+-----------+
+| Interface | Type       | Ports     |
++-----------+------------+-----------+
+| ap_clk    | clock      | ap_clk    |
+| ap_rst_n  | reset      | ap_rst_n  |
+| interrupt | interrupt  | interrupt |
+| ap_ctrl   | ap_ctrl_hs |           |
++-----------+------------+-----------+
+
+
+================================================================
+== SW I/O Information
+================================================================
+* Top Function Arguments
++-------------+-----------+-----------------------------------------------------------------------------+
+| Argument    | Direction | Datatype                                                                    |
++-------------+-----------+-----------------------------------------------------------------------------+
+| s_in        | in        | stream<hls::axis<ap_int<32>, 0UL, 0UL, 0UL, (unsigned char)'8', false>, 0>& |
+| m_out       | out       | stream<hls::axis<ap_int<32>, 0UL, 0UL, 0UL, (unsigned char)'8', false>, 0>& |
+| halted      | out       | ap_uint<1>&                                                                 |
+| error       | out       | ap_uint<32>&                                                                |
+| error_tx_id | out       | ap_uint<32>&                                                                |
++-------------+-----------+-----------------------------------------------------------------------------+
+
+* SW-to-HW Mapping
++-------------+---------------+-----------+--------------------------------------------+
+| Argument    | HW Interface  | HW Type   | HW Info                                    |
++-------------+---------------+-----------+--------------------------------------------+
+| s_in        | s_in          | interface |                                            |
+| m_out       | m_out         | interface |                                            |
+| halted      | s_axi_control | register  | name=halted offset=0x10 range=32           |
+| halted      | s_axi_control | register  | name=halted_ctrl offset=0x14 range=32      |
+| error       | s_axi_control | register  | name=error offset=0x20 range=32            |
+| error       | s_axi_control | register  | name=error_ctrl offset=0x24 range=32       |
+| error_tx_id | s_axi_control | register  | name=error_tx_id offset=0x30 range=32      |
+| error_tx_id | s_axi_control | register  | name=error_tx_id_ctrl offset=0x34 range=32 |
++-------------+---------------+-----------+--------------------------------------------+
+
+
+================================================================
+== Bind Op Report
+================================================================
++----------------------------------+-----+--------+----------------+-----------+--------------------------+---------+
+| Name                             | DSP | Pragma | Variable       | Op        | Impl                     | Latency |
++----------------------------------+-----+--------+----------------+-----------+--------------------------+---------+
+| + maxpool                        | 2   |        |                |           |                          |         |
+|   add_ln64_fu_587_p2             |     |        | add_ln64       | add       | fabric                   | 0       |
+|   icmp_ln64_fu_593_p2            |     |        | icmp_ln64      | setgt     | auto                     | 0       |
+|   add_ln64_1_fu_599_p2           |     |        | add_ln64_1     | add       | fabric                   | 0       |
+|   icmp_ln64_1_fu_605_p2          |     |        | icmp_ln64_1    | setgt     | auto                     | 0       |
+|   or_ln64_fu_611_p2              |     |        | or_ln64        | or        | auto                     | 0       |
+|   k4_fu_617_p2                   |     |        | k4             | seteq     | auto                     | 0       |
+|   icmp_ln3_1_fu_623_p2           |     |        | icmp_ln3_1     | seteq     | auto                     | 0       |
+|   or_ln3_fu_629_p2               |     |        | or_ln3         | or        | auto                     | 0       |
+|   icmp_ln65_fu_635_p2            |     |        | icmp_ln65      | setgt     | auto                     | 0       |
+|   icmp_ln65_1_fu_641_p2          |     |        | icmp_ln65_1    | setgt     | auto                     | 0       |
+|   or_ln65_fu_647_p2              |     |        | or_ln65        | or        | auto                     | 0       |
+|   add_ln65_fu_653_p2             |     |        | add_ln65       | add       | fabric                   | 0       |
+|   or_ln65_1_fu_659_p2            |     |        | or_ln65_1      | or        | auto                     | 0       |
+|   and_ln65_fu_665_p2             |     |        | and_ln65       | and       | auto                     | 0       |
+|   icmp_ln65_2_fu_671_p2          |     |        | icmp_ln65_2    | seteq     | auto                     | 0       |
+|   mul_16ns_16ns_32_1_1_U102      | 1   |        | nsamples       | mul       | auto                     | 0       |
+|   oh_fu_708_p3                   |     |        | oh             | select    | auto_sel                 | 0       |
+|   ow_fu_737_p3                   |     |        | ow             | select    | auto_sel                 | 0       |
+|   mul_15ns_15ns_30_1_1_U103      | 1   |        | nout           | mul       | auto                     | 0       |
+|   select_ln18_fu_752_p3          |     |        | select_ln18    | select    | auto_sel                 | 0       |
+|  + maxpool_Pipeline_read_header  | 0   |        |                |           |                          |         |
+|    icmp_ln45_fu_261_p2           |     |        | icmp_ln45      | seteq     | auto                     | 0       |
+|    add_ln45_fu_267_p2            |     |        | add_ln45       | add       | fabric                   | 0       |
+|    icmp_ln48_fu_288_p2           |     |        | icmp_ln48      | seteq     | auto                     | 0       |
+|    xor_ln48_fu_294_p2            |     |        | xor_ln48       | xor       | auto                     | 0       |
+|    select_ln48_fu_329_p3         |     |        | select_ln48    | select    | auto_sel                 | 0       |
+|    select_ln48_1_fu_336_p3       |     |        | select_ln48_1  | select    | auto_sel                 | 0       |
+|    or_ln48_fu_343_p2             |     |        | or_ln48        | or        | auto                     | 0       |
+|  + maxpool_Pipeline_buffer_image | 0   |        |                |           |                          |         |
+|    icmp_ln73_fu_413_p2           |     |        | icmp_ln73      | setlt     | auto                     | 0       |
+|    n_4_fu_418_p2                 |     |        | n_4            | add       | fabric                   | 0       |
+|    final_fu_432_p2               |     |        | final          | seteq     | auto                     | 0       |
+|    add_ln78_fu_499_p2            |     |        | add_ln78       | add       | fabric                   | 0       |
+|    xor_ln79_fu_535_p2            |     |        | xor_ln79       | xor       | auto                     | 0       |
+|    add_ln83_fu_545_p2            |     |        | add_ln83       | add       | fabric                   | 0       |
+|    icmp_ln83_fu_555_p2           |     |        | icmp_ln83      | seteq     | auto                     | 0       |
+|    col_4_fu_560_p2               |     |        | col_4          | add       | fabric                   | 0       |
+|    empty_fu_566_p3               |     |        | empty          | select    | auto_sel                 | 0       |
+|    row_3_fu_574_p2               |     |        | row_3          | add       | fabric                   | 0       |
+|    col_5_fu_580_p3               |     |        | col_5          | select    | auto_sel                 | 0       |
+|  + maxpool_Pipeline_emit_windows | 0   |        |                |           |                          |         |
+|    icmp_ln69_fu_2716_p2          |     |        | icmp_ln69      | seteq     | auto                     | 0       |
+|    icmp_ln94_fu_2740_p2          |     |        | icmp_ln94      | seteq     | auto                     | 0       |
+|    n_2_fu_2746_p2                |     |        | n_2            | add       | fabric                   | 0       |
+|    add_ln104_6_fu_2848_p2        |     |        | add_ln104_6    | add       | fabric                   | 0       |
+|    sparsemux_9_2_16_1_1_U41      |     |        | tmp_3          | sparsemux | compactencoding_dontcare | 0       |
+|    sparsemux_9_2_16_1_1_U42      |     |        | tmp_4          | sparsemux | compactencoding_dontcare | 0       |
+|    sparsemux_9_2_16_1_1_U43      |     |        | tmp_5          | sparsemux | compactencoding_dontcare | 0       |
+|    sparsemux_9_2_16_1_1_U44      |     |        | tmp_6          | sparsemux | compactencoding_dontcare | 0       |
+|    sparsemux_9_2_16_1_1_U57      |     |        | v              | sparsemux | compactencoding_dontcare | 0       |
+|    add_ln104_fu_2874_p2          |     |        | add_ln104      | add       | fabric                   | 0       |
+|    add_ln104_7_fu_2893_p2        |     |        | add_ln104_7    | add       | fabric                   | 0       |
+|    add_ln104_1_fu_2919_p2        |     |        | add_ln104_1    | add       | fabric                   | 0       |
+|    add_ln104_8_fu_2943_p2        |     |        | add_ln104_8    | add       | fabric                   | 0       |
+|    add_ln104_9_fu_2969_p2        |     |        | add_ln104_9    | add       | fabric                   | 0       |
+|    sparsemux_9_2_16_1_1_U45      |     |        | tmp_8          | sparsemux | compactencoding_dontcare | 0       |
+|    sparsemux_9_2_16_1_1_U46      |     |        | tmp_9          | sparsemux | compactencoding_dontcare | 0       |
+|    sparsemux_9_2_16_1_1_U47      |     |        | tmp_s          | sparsemux | compactencoding_dontcare | 0       |
+|    sparsemux_9_2_16_1_1_U48      |     |        | tmp_7          | sparsemux | compactencoding_dontcare | 0       |
+|    sparsemux_9_2_16_1_1_U58      |     |        | v_1            | sparsemux | compactencoding_dontcare | 0       |
+|    sparsemux_9_2_16_1_1_U41      |     |        | tmp_1          | sparsemux | compactencoding_dontcare | 0       |
+|    sparsemux_9_2_16_1_1_U42      |     |        | tmp_10         | sparsemux | compactencoding_dontcare | 0       |
+|    sparsemux_9_2_16_1_1_U43      |     |        | tmp_11         | sparsemux | compactencoding_dontcare | 0       |
+|    sparsemux_9_2_16_1_1_U44      |     |        | tmp_12         | sparsemux | compactencoding_dontcare | 0       |
+|    sparsemux_9_2_16_1_1_U59      |     |        | v_2            | sparsemux | compactencoding_dontcare | 0       |
+|    sparsemux_9_2_16_1_1_U45      |     |        | tmp_13         | sparsemux | compactencoding_dontcare | 0       |
+|    sparsemux_9_2_16_1_1_U46      |     |        | tmp_14         | sparsemux | compactencoding_dontcare | 0       |
+|    sparsemux_9_2_16_1_1_U47      |     |        | tmp_15         | sparsemux | compactencoding_dontcare | 0       |
+|    sparsemux_9_2_16_1_1_U48      |     |        | tmp_16         | sparsemux | compactencoding_dontcare | 0       |
+|    sparsemux_9_2_16_1_1_U60      |     |        | v_3            | sparsemux | compactencoding_dontcare | 0       |
+|    add_ln104_2_fu_2995_p2        |     |        | add_ln104_2    | add       | fabric                   | 0       |
+|    add_ln104_10_fu_3019_p2       |     |        | add_ln104_10   | add       | fabric                   | 0       |
+|    add_ln104_11_fu_3045_p2       |     |        | add_ln104_11   | add       | fabric                   | 0       |
+|    add_ln104_3_fu_3071_p2        |     |        | add_ln104_3    | add       | fabric                   | 0       |
+|    add_ln104_12_fu_3095_p2       |     |        | add_ln104_12   | add       | fabric                   | 0       |
+|    add_ln104_13_fu_3121_p2       |     |        | add_ln104_13   | add       | fabric                   | 0       |
+|    add_ln104_4_fu_3147_p2        |     |        | add_ln104_4    | add       | fabric                   | 0       |
+|    add_ln104_14_fu_3166_p2       |     |        | add_ln104_14   | add       | fabric                   | 0       |
+|    add_ln104_15_fu_3192_p2       |     |        | add_ln104_15   | add       | fabric                   | 0       |
+|    add_ln104_16_fu_3218_p2       |     |        | add_ln104_16   | add       | fabric                   | 0       |
+|    add_ln104_17_fu_3244_p2       |     |        | add_ln104_17   | add       | fabric                   | 0       |
+|    sparsemux_9_2_16_1_1_U49      |     |        | tmp_17         | sparsemux | compactencoding_dontcare | 0       |
+|    sparsemux_9_2_16_1_1_U50      |     |        | tmp_18         | sparsemux | compactencoding_dontcare | 0       |
+|    sparsemux_9_2_16_1_1_U51      |     |        | tmp_19         | sparsemux | compactencoding_dontcare | 0       |
+|    sparsemux_9_2_16_1_1_U52      |     |        | tmp_20         | sparsemux | compactencoding_dontcare | 0       |
+|    sparsemux_9_2_16_1_1_U61      |     |        | v_4            | sparsemux | compactencoding_dontcare | 0       |
+|    add_ln104_5_fu_3270_p2        |     |        | add_ln104_5    | add       | fabric                   | 0       |
+|    add_ln104_18_fu_3289_p2       |     |        | add_ln104_18   | add       | fabric                   | 0       |
+|    add_ln104_19_fu_3315_p2       |     |        | add_ln104_19   | add       | fabric                   | 0       |
+|    add_ln104_20_fu_3341_p2       |     |        | add_ln104_20   | add       | fabric                   | 0       |
+|    add_ln104_21_fu_3367_p2       |     |        | add_ln104_21   | add       | fabric                   | 0       |
+|    sparsemux_9_2_16_1_1_U53      |     |        | tmp_21         | sparsemux | compactencoding_dontcare | 0       |
+|    sparsemux_9_2_16_1_1_U54      |     |        | tmp_22         | sparsemux | compactencoding_dontcare | 0       |
+|    sparsemux_9_2_16_1_1_U55      |     |        | tmp_23         | sparsemux | compactencoding_dontcare | 0       |
+|    sparsemux_9_2_16_1_1_U56      |     |        | tmp_24         | sparsemux | compactencoding_dontcare | 0       |
+|    sparsemux_9_2_16_1_1_U62      |     |        | tmp_25         | sparsemux | compactencoding_dontcare | 0       |
+|    sparsemux_9_2_16_1_1_U49      |     |        | tmp_26         | sparsemux | compactencoding_dontcare | 0       |
+|    sparsemux_9_2_16_1_1_U50      |     |        | tmp_27         | sparsemux | compactencoding_dontcare | 0       |
+|    sparsemux_9_2_16_1_1_U51      |     |        | tmp_28         | sparsemux | compactencoding_dontcare | 0       |
+|    sparsemux_9_2_16_1_1_U52      |     |        | tmp_29         | sparsemux | compactencoding_dontcare | 0       |
+|    sparsemux_9_2_16_1_1_U63      |     |        | v_5            | sparsemux | compactencoding_dontcare | 0       |
+|    sparsemux_9_2_16_1_1_U53      |     |        | tmp_30         | sparsemux | compactencoding_dontcare | 0       |
+|    sparsemux_9_2_16_1_1_U54      |     |        | tmp_31         | sparsemux | compactencoding_dontcare | 0       |
+|    sparsemux_9_2_16_1_1_U55      |     |        | tmp_32         | sparsemux | compactencoding_dontcare | 0       |
+|    sparsemux_9_2_16_1_1_U56      |     |        | tmp_33         | sparsemux | compactencoding_dontcare | 0       |
+|    sparsemux_9_2_16_1_1_U64      |     |        | tmp_34         | sparsemux | compactencoding_dontcare | 0       |
+|    sparsemux_9_2_16_1_1_U41      |     |        | tmp_35         | sparsemux | compactencoding_dontcare | 0       |
+|    sparsemux_9_2_16_1_1_U42      |     |        | tmp_36         | sparsemux | compactencoding_dontcare | 0       |
+|    sparsemux_9_2_16_1_1_U43      |     |        | tmp_37         | sparsemux | compactencoding_dontcare | 0       |
+|    sparsemux_9_2_16_1_1_U44      |     |        | tmp_38         | sparsemux | compactencoding_dontcare | 0       |
+|    sparsemux_9_2_16_1_1_U65      |     |        | v_6            | sparsemux | compactencoding_dontcare | 0       |
+|    sparsemux_9_2_16_1_1_U45      |     |        | tmp_39         | sparsemux | compactencoding_dontcare | 0       |
+|    sparsemux_9_2_16_1_1_U46      |     |        | tmp_40         | sparsemux | compactencoding_dontcare | 0       |
+|    sparsemux_9_2_16_1_1_U47      |     |        | tmp_41         | sparsemux | compactencoding_dontcare | 0       |
+|    sparsemux_9_2_16_1_1_U48      |     |        | tmp_42         | sparsemux | compactencoding_dontcare | 0       |
+|    sparsemux_9_2_16_1_1_U66      |     |        | tmp_43         | sparsemux | compactencoding_dontcare | 0       |
+|    sparsemux_9_2_16_1_1_U49      |     |        | tmp_44         | sparsemux | compactencoding_dontcare | 0       |
+|    sparsemux_9_2_16_1_1_U50      |     |        | tmp_45         | sparsemux | compactencoding_dontcare | 0       |
+|    sparsemux_9_2_16_1_1_U51      |     |        | tmp_46         | sparsemux | compactencoding_dontcare | 0       |
+|    sparsemux_9_2_16_1_1_U52      |     |        | tmp_47         | sparsemux | compactencoding_dontcare | 0       |
+|    sparsemux_9_2_16_1_1_U67      |     |        | v_7            | sparsemux | compactencoding_dontcare | 0       |
+|    sparsemux_9_2_16_1_1_U53      |     |        | tmp_48         | sparsemux | compactencoding_dontcare | 0       |
+|    sparsemux_9_2_16_1_1_U54      |     |        | tmp_49         | sparsemux | compactencoding_dontcare | 0       |
+|    sparsemux_9_2_16_1_1_U55      |     |        | tmp_50         | sparsemux | compactencoding_dontcare | 0       |
+|    sparsemux_9_2_16_1_1_U56      |     |        | tmp_51         | sparsemux | compactencoding_dontcare | 0       |
+|    sparsemux_9_2_16_1_1_U68      |     |        | tmp_52         | sparsemux | compactencoding_dontcare | 0       |
+|    sparsemux_9_2_16_1_1_U41      |     |        | tmp_53         | sparsemux | compactencoding_dontcare | 0       |
+|    sparsemux_9_2_16_1_1_U42      |     |        | tmp_54         | sparsemux | compactencoding_dontcare | 0       |
+|    sparsemux_9_2_16_1_1_U43      |     |        | tmp_55         | sparsemux | compactencoding_dontcare | 0       |
+|    sparsemux_9_2_16_1_1_U44      |     |        | tmp_56         | sparsemux | compactencoding_dontcare | 0       |
+|    sparsemux_9_2_16_1_1_U69      |     |        | v_8            | sparsemux | compactencoding_dontcare | 0       |
+|    sparsemux_9_2_16_1_1_U45      |     |        | tmp_57         | sparsemux | compactencoding_dontcare | 0       |
+|    sparsemux_9_2_16_1_1_U46      |     |        | tmp_58         | sparsemux | compactencoding_dontcare | 0       |
+|    sparsemux_9_2_16_1_1_U47      |     |        | tmp_59         | sparsemux | compactencoding_dontcare | 0       |
+|    sparsemux_9_2_16_1_1_U48      |     |        | tmp_60         | sparsemux | compactencoding_dontcare | 0       |
+|    sparsemux_9_2_16_1_1_U70      |     |        | tmp_61         | sparsemux | compactencoding_dontcare | 0       |
+|    sparsemux_9_2_16_1_1_U49      |     |        | tmp_62         | sparsemux | compactencoding_dontcare | 0       |
+|    sparsemux_9_2_16_1_1_U50      |     |        | tmp_63         | sparsemux | compactencoding_dontcare | 0       |
+|    sparsemux_9_2_16_1_1_U51      |     |        | tmp_64         | sparsemux | compactencoding_dontcare | 0       |
+|    sparsemux_9_2_16_1_1_U52      |     |        | tmp_65         | sparsemux | compactencoding_dontcare | 0       |
+|    sparsemux_9_2_16_1_1_U71      |     |        | v_9            | sparsemux | compactencoding_dontcare | 0       |
+|    sparsemux_9_2_16_1_1_U53      |     |        | tmp_66         | sparsemux | compactencoding_dontcare | 0       |
+|    sparsemux_9_2_16_1_1_U54      |     |        | tmp_67         | sparsemux | compactencoding_dontcare | 0       |
+|    sparsemux_9_2_16_1_1_U55      |     |        | tmp_68         | sparsemux | compactencoding_dontcare | 0       |
+|    sparsemux_9_2_16_1_1_U56      |     |        | tmp_69         | sparsemux | compactencoding_dontcare | 0       |
+|    sparsemux_9_2_16_1_1_U72      |     |        | tmp_70         | sparsemux | compactencoding_dontcare | 0       |
+|    v_15_fu_3778_p3               |     |        | v_15           | select    | auto_sel                 | 0       |
+|    v_14_fu_3784_p3               |     |        | v_14           | select    | auto_sel                 | 0       |
+|    v_13_fu_3790_p3               |     |        | v_13           | select    | auto_sel                 | 0       |
+|    v_12_fu_3796_p3               |     |        | v_12           | select    | auto_sel                 | 0       |
+|    v_11_fu_3802_p3               |     |        | v_11           | select    | auto_sel                 | 0       |
+|    v_10_fu_3808_p3               |     |        | v_10           | select    | auto_sel                 | 0       |
+|    v_16_fu_3814_p3               |     |        | v_16           | select    | auto_sel                 | 0       |
+|    v_17_fu_3820_p3               |     |        | v_17           | select    | auto_sel                 | 0       |
+|    v_19_fu_3826_p3               |     |        | v_19           | select    | auto_sel                 | 0       |
+|    v_18_fu_3832_p3               |     |        | v_18           | select    | auto_sel                 | 0       |
+|    v_20_fu_3838_p3               |     |        | v_20           | select    | auto_sel                 | 0       |
+|    v_21_fu_3844_p3               |     |        | v_21           | select    | auto_sel                 | 0       |
+|    icmp_ln110_fu_3850_p2         |     |        | icmp_ln110     | setlt     | auto                     | 0       |
+|    xor_ln110_fu_3855_p2          |     |        | xor_ln110      | xor       | auto                     | 0       |
+|    v_22_fu_3861_p3               |     |        | v_22           | select    | auto_sel                 | 0       |
+|    icmp_ln110_1_fu_3868_p2       |     |        | icmp_ln110_1   | setlt     | auto                     | 0       |
+|    xor_ln110_1_fu_3873_p2        |     |        | xor_ln110_1    | xor       | auto                     | 0       |
+|    v_23_fu_3879_p3               |     |        | v_23           | select    | auto_sel                 | 0       |
+|    icmp_ln110_2_fu_3886_p2       |     |        | icmp_ln110_2   | setlt     | auto                     | 0       |
+|    xor_ln110_2_fu_3892_p2        |     |        | xor_ln110_2    | xor       | auto                     | 0       |
+|    select_ln110_2_fu_3898_p3     |     |        | select_ln110_2 | select    | auto_sel                 | 0       |
+|    icmp_ln110_3_fu_3906_p2       |     |        | icmp_ln110_3   | setlt     | auto                     | 0       |
+|    xor_ln110_3_fu_3912_p2        |     |        | xor_ln110_3    | xor       | auto                     | 0       |
+|    v_24_fu_3918_p3               |     |        | v_24           | select    | auto_sel                 | 0       |
+|    icmp_ln110_4_fu_3926_p2       |     |        | icmp_ln110_4   | setlt     | auto                     | 0       |
+|    xor_ln110_4_fu_3931_p2        |     |        | xor_ln110_4    | xor       | auto                     | 0       |
+|    v_25_fu_3937_p3               |     |        | v_25           | select    | auto_sel                 | 0       |
+|    icmp_ln110_5_fu_3944_p2       |     |        | icmp_ln110_5   | setlt     | auto                     | 0       |
+|    xor_ln110_5_fu_3949_p2        |     |        | xor_ln110_5    | xor       | auto                     | 0       |
+|    v_26_fu_3955_p3               |     |        | v_26           | select    | auto_sel                 | 0       |
+|    icmp_ln110_6_fu_3962_p2       |     |        | icmp_ln110_6   | setlt     | auto                     | 0       |
+|    xor_ln110_6_fu_3968_p2        |     |        | xor_ln110_6    | xor       | auto                     | 0       |
+|    select_ln110_6_fu_3974_p3     |     |        | select_ln110_6 | select    | auto_sel                 | 0       |
+|    icmp_ln110_7_fu_3982_p2       |     |        | icmp_ln110_7   | setlt     | auto                     | 0       |
+|    xor_ln110_7_fu_3988_p2        |     |        | xor_ln110_7    | xor       | auto                     | 0       |
+|    v_27_fu_3994_p3               |     |        | v_27           | select    | auto_sel                 | 0       |
+|    icmp_ln114_fu_4002_p2         |     |        | icmp_ln114     | setlt     | auto                     | 0       |
+|    xor_ln114_fu_4008_p2          |     |        | xor_ln114      | xor       | auto                     | 0       |
+|    v_28_fu_4014_p3               |     |        | v_28           | select    | auto_sel                 | 0       |
+|    icmp_ln114_1_fu_4022_p2       |     |        | icmp_ln114_1   | setlt     | auto                     | 0       |
+|    xor_ln114_1_fu_4028_p2        |     |        | xor_ln114_1    | xor       | auto                     | 0       |
+|    v_29_fu_4034_p3               |     |        | v_29           | select    | auto_sel                 | 0       |
+|    icmp_ln114_2_fu_4042_p2       |     |        | icmp_ln114_2   | setlt     | auto                     | 0       |
+|    xor_ln114_2_fu_4048_p2        |     |        | xor_ln114_2    | xor       | auto                     | 0       |
+|    select_ln114_2_fu_4054_p3     |     |        | select_ln114_2 | select    | auto_sel                 | 0       |
+|    icmp_ln114_3_fu_4062_p2       |     |        | icmp_ln114_3   | setlt     | auto                     | 0       |
+|    xor_ln114_3_fu_4068_p2        |     |        | xor_ln114_3    | xor       | auto                     | 0       |
+|    v_30_fu_4074_p3               |     |        | v_30           | select    | auto_sel                 | 0       |
+|    icmp_ln118_fu_4082_p2         |     |        | icmp_ln118     | setlt     | auto                     | 0       |
+|    xor_ln118_fu_4086_p2          |     |        | xor_ln118      | xor       | auto                     | 0       |
+|    v_31_fu_4092_p3               |     |        | v_31           | select    | auto_sel                 | 0       |
+|    icmp_ln118_1_fu_4098_p2       |     |        | icmp_ln118_1   | setlt     | auto                     | 0       |
+|    xor_ln118_1_fu_4102_p2        |     |        | xor_ln118_1    | xor       | auto                     | 0       |
+|    v_32_fu_4108_p3               |     |        | v_32           | select    | auto_sel                 | 0       |
+|    icmp_ln120_fu_4114_p2         |     |        | icmp_ln120     | setlt     | auto                     | 0       |
+|    xor_ln120_fu_4120_p2          |     |        | xor_ln120      | xor       | auto                     | 0       |
+|    bits_fu_4126_p3               |     |        | bits           | select    | auto_sel                 | 0       |
+|    icmp_ln123_fu_2752_p2         |     |        | icmp_ln123     | seteq     | auto                     | 0       |
+|    add_ln124_fu_2784_p2          |     |        | add_ln124      | add       | fabric                   | 0       |
+|    icmp_ln124_fu_2793_p2         |     |        | icmp_ln124     | seteq     | auto                     | 0       |
+|    base_c_1_fu_2798_p2           |     |        | base_c_1       | add       | fabric                   | 0       |
+|    empty_fu_3393_p3              |     |        | empty          | select    | auto_sel                 | 0       |
+|    base_r_2_fu_3399_p2           |     |        | base_r_2       | add       | fabric                   | 0       |
+|    base_c_2_fu_2803_p3           |     |        | base_c_2       | select    | auto_sel                 | 0       |
++----------------------------------+-----+--------+----------------+-----------+--------------------------+---------+
+
+
+================================================================
+== Storage Report
+================================================================
++-------------------+--------------+-----------+------+------+--------+--------+----------+------+---------+------------------+
+| Name              | Usage        | Type      | BRAM | URAM | CE_REG | Pragma | Variable | Impl | Latency | Bitwidth, Depth, |
+|                   |              |           |      |      |        |        |          |      |         | Banks            |
++-------------------+--------------+-----------+------+------+--------+--------+----------+------+---------+------------------+
+| + maxpool         |              |           | 16   | 0    |        |        |          |      |         |                  |
+|   control_s_axi_U | interface    | s_axilite |      |      |        |        |          |      |         |                  |
+|   image_U         | ram_1p array |           | 1    |      | N      |        | image    | auto | 1       | 16, 256, 1       |
+|   image_1_U       | ram_1p array |           | 1    |      | N      |        | image_1  | auto | 1       | 16, 256, 1       |
+|   image_2_U       | ram_1p array |           | 1    |      | N      |        | image_2  | auto | 1       | 16, 256, 1       |
+|   image_3_U       | ram_1p array |           | 1    |      | N      |        | image_3  | auto | 1       | 16, 256, 1       |
+|   image_4_U       | ram_1p array |           | 1    |      | N      |        | image_4  | auto | 1       | 16, 256, 1       |
+|   image_5_U       | ram_1p array |           | 1    |      | N      |        | image_5  | auto | 1       | 16, 256, 1       |
+|   image_6_U       | ram_1p array |           | 1    |      | N      |        | image_6  | auto | 1       | 16, 256, 1       |
+|   image_7_U       | ram_1p array |           | 1    |      | N      |        | image_7  | auto | 1       | 16, 256, 1       |
+|   image_8_U       | ram_1p array |           | 1    |      | N      |        | image_8  | auto | 1       | 16, 256, 1       |
+|   image_9_U       | ram_1p array |           | 1    |      | N      |        | image_9  | auto | 1       | 16, 256, 1       |
+|   image_10_U      | ram_1p array |           | 1    |      | N      |        | image_10 | auto | 1       | 16, 256, 1       |
+|   image_11_U      | ram_1p array |           | 1    |      | N      |        | image_11 | auto | 1       | 16, 256, 1       |
+|   image_12_U      | ram_1p array |           | 1    |      | N      |        | image_12 | auto | 1       | 16, 256, 1       |
+|   image_13_U      | ram_1p array |           | 1    |      | N      |        | image_13 | auto | 1       | 16, 256, 1       |
+|   image_14_U      | ram_1p array |           | 1    |      | N      |        | image_14 | auto | 1       | 16, 256, 1       |
+|   image_15_U      | ram_1p array |           | 1    |      | N      |        | image_15 | auto | 1       | 16, 256, 1       |
++-------------------+--------------+-----------+------+------+--------+--------+----------+------+---------+------------------+
+
+
+================================================================
+== Pragma Report
+================================================================
+* Ignored Pragmas
++--------+---------+-------------------------------------+-----------------+
+| Type   | Options | Location                            | Messages        |
++--------+---------+-------------------------------------+-----------------+
+| UNROLL |         | in body (maxpool_body_impl.tpp:100) | Not implemented |
+| UNROLL |         | in body (maxpool_body_impl.tpp:102) | Not implemented |
+| UNROLL |         | in body (maxpool_body_impl.tpp:109) | Not implemented |
+| UNROLL |         | in body (maxpool_body_impl.tpp:113) | Not implemented |
+| UNROLL |         | in body (maxpool_body_impl.tpp:117) | Not implemented |
++--------+---------+-------------------------------------+-----------------+
+
+* Inferred Pragmas
++----------+---------+--------------------------------------------------------------------------------------------+-------------------------------+
+| Type     | Options | Location                                                                                   | Inferred From                 |
++----------+---------+--------------------------------------------------------------------------------------------+-------------------------------+
+| PIPELINE |         | loop read_header (gen/../maxpool_body_impl.tpp:45:9) in maxpool (maxpool_body_impl.tpp:45) | syn.compile.pipeline_loops=64 |
++----------+---------+--------------------------------------------------------------------------------------------+-------------------------------+
+
+* Implemented Pragmas
++-----------------+---------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Type            | Options                                     | Location                                                                                                                                                                                                            |
++-----------------+---------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| INLINE          |                                             | in _zn12maxpool_impll4emitili32eeevrn3hls6streamins1_4axisi6ap_intixt_eelm0elm0elm0elh56elb0eeeli0eee7ap_uintili32eeb (maxpool_body_impl.tpp:9)                                                                     |
+| INLINE          |                                             | in _zn12maxpool_impll4failer7ap_uintili1eers0_ili32ees4_js3_ (maxpool_body_impl.tpp:20)                                                                                                                             |
+| INLINE          |                                             | in _zn12maxpool_impl4bodyili32eli32eeevrn3hls6streamins1_4axisi6ap_intixt_eelm0elm0elm0elh56elb0eeeli0eeerns2_ins3_is4_ixt0_eelm0elm0elm0elh56elb0eeeli0eeer7ap_uintili1eersd_ili32eesh_ (maxpool_body_impl.tpp:30) |
+| ARRAY_PARTITION | dim=1 type=cyclic factor=4 variable=image.i | in maxpool (maxpool_body_impl.tpp:35)                                                                                                                                                                               |
+| ARRAY_PARTITION | dim=2 type=cyclic factor=4 variable=image.i | in maxpool (maxpool_body_impl.tpp:36)                                                                                                                                                                               |
+| ARRAY_PARTITION | dim=1 type=complete variable=header.i       | in maxpool (maxpool_body_impl.tpp:43)                                                                                                                                                                               |
+| LOOP_TRIPCOUNT  | max=4096 min=4 avg=2050                     | in maxpool_pipeline_buffer_image (maxpool_body_impl.tpp:75)                                                                                                                                                         |
+| LOOP_TRIPCOUNT  | max=1024 min=1 avg=512                      | in maxpool_pipeline_emit_windows (maxpool_body_impl.tpp:96)                                                                                                                                                         |
+| ARRAY_PARTITION | dim=1 type=complete variable=v.i            | in maxpool (maxpool_body_impl.tpp:98)                                                                                                                                                                               |
++-----------------+---------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+* Valid Pragma Syntax
++-----------------+-------------------------------------------+---------------------------------------------------------------+
+| Type            | Options                                   | Location                                                      |
++-----------------+-------------------------------------------+---------------------------------------------------------------+
+| INTERFACE       | axis port=s_in register_mode=off          | in maxpool (gen/maxpool.cpp:10)                               |
+| INTERFACE       | axis port=m_out                           | in maxpool (gen/maxpool.cpp:11)                               |
+| INTERFACE       | s_axilite port=halted bundle=control      | in maxpool (gen/maxpool.cpp:12)                               |
+| INTERFACE       | s_axilite port=error bundle=control       | in maxpool (gen/maxpool.cpp:13)                               |
+| INTERFACE       | s_axilite port=error_tx_id bundle=control | in maxpool (gen/maxpool.cpp:14)                               |
+| INTERFACE       | s_axilite port=return bundle=control      | in maxpool (gen/maxpool.cpp:15)                               |
+| PIPELINE        | ii=1                                      | in flush_axi4_stream_to_tlast (include/streamutils_hls.h:191) |
+| INLINE          |                                           | in emit (maxpool_body_impl.tpp:9)                             |
+| INLINE          |                                           | in fail (maxpool_body_impl.tpp:20)                            |
+| INLINE          |                                           | in body (maxpool_body_impl.tpp:30)                            |
+| ARRAY_PARTITION | variable=image cyclic factor=4 dim=1      | in body (maxpool_body_impl.tpp:35)                            |
+| ARRAY_PARTITION | variable=image cyclic factor=4 dim=2      | in body (maxpool_body_impl.tpp:36)                            |
+| ARRAY_PARTITION | variable=header complete                  | in body (maxpool_body_impl.tpp:43)                            |
+| PIPELINE        | ii=1                                      | in body (maxpool_body_impl.tpp:74)                            |
+| LOOP_TRIPCOUNT  | min=4 max=4096                            | in body (maxpool_body_impl.tpp:75)                            |
+| PIPELINE        | ii=1                                      | in body (maxpool_body_impl.tpp:95)                            |
+| LOOP_TRIPCOUNT  | min=1 max=1024                            | in body (maxpool_body_impl.tpp:96)                            |
+| ARRAY_PARTITION | variable=v complete                       | in body (maxpool_body_impl.tpp:98)                            |
++-----------------+-------------------------------------------+---------------------------------------------------------------+
+
+

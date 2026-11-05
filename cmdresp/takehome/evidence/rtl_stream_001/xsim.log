@@ -1,0 +1,131 @@
+#-----------------------------------------------------------
+# xsim v2026.1 (64-bit)
+# SW Build 6511674 on Tue Jun 16 11:01:26 MDT 2026
+# IP Build 6504888 on Tue Jun 09 09:05:25 MDT 2026
+# SharedData Build 6501428 on Mon Jun 08 17:34:18 MDT 2026
+# Start of session at: Wed Nov  4 21:48:49 2026
+# Process ID         : 3468889
+# Current directory  : /home/js12359/hwdesign-work/cmdresp/takehome/evidence/rtl_stream_001
+# Command line       : xsim -mode tcl -source {xsim.dir/maxpool_stream_sim/xsim_script.tcl}
+# Log file           : /home/js12359/hwdesign-work/cmdresp/takehome/evidence/rtl_stream_001/xsim.log
+# Journal file       : /home/js12359/hwdesign-work/cmdresp/takehome/evidence/rtl_stream_001/xsim.jou
+# Running On         : ecs03.poly.edu
+# Platform           : rhel
+# Operating System   : Red Hat Enterprise Linux 9.8 (Plow)
+# Processor Detail   : Intel(R) Xeon(R) Gold 6338N CPU @ 2.20GHz
+# CPU Frequency      : 2699.972 MHz
+# CPU Physical cores : 64
+# CPU Logical cores  : 64
+# Host memory        : 1064171 MB
+# Swap memory        : 274877 MB
+# Total Virtual      : 1339049 MB
+# Available Virtual  : 1216147 MB
+#-----------------------------------------------------------
+source xsim.dir/maxpool_stream_sim/xsim_script.tcl
+# xsim {maxpool_stream_sim} -testplusarg SCENARIOS=/home/js12359/hwdesign-work/cmdresp/takehome/evidence/rtl_stream_001/sources/data/scenarios.txt -testplusarg RESULT=/home/js12359/hwdesign-work/cmdresp/takehome/evidence/rtl_stream_001/rtl_checks.json -autoloadwcfg -runall
+Time resolution is 1 ps
+run -all
+RTL_ACTIVATION 0 performance_64x64_k2 PASS accepted=4104/4104 output=1026/1026 status=0,0,0 pending_at_done=0 post_done_accepts=0
+RTL_ACTIVATION 1 hand_a PASS accepted=24/24 output=6/6 status=0,0,0 pending_at_done=0 post_done_accepts=0
+RTL_ACTIVATION 2 hand_b_smallest_negative_tied PASS accepted=12/12 output=3/3 status=0,0,0 pending_at_done=0 post_done_accepts=0
+RTL_ACTIVATION 3 largest_k4 PASS accepted=4104/4104 output=258/258 status=0,0,0 pending_at_done=0 post_done_accepts=0
+RTL_ACTIVATION 4 rectangular_k2 PASS accepted=68/68 output=17/17 status=0,0,0 pending_at_done=0 post_done_accepts=0
+RTL_ACTIVATION 5 rectangular_k4 PASS accepted=56/56 output=5/5 status=0,0,0 pending_at_done=0 post_done_accepts=0
+RTL_ACTIVATION 6 all_negative_k4 PASS accepted=40/40 output=4/4 status=0,0,0 pending_at_done=0 post_done_accepts=0
+RTL_ACTIVATION 7 all_equal_minimum PASS accepted=40/40 output=10/10 status=0,0,0 pending_at_done=0 post_done_accepts=0
+RTL_ACTIVATION 8 all_equal_maximum PASS accepted=24/24 output=3/3 status=0,0,0 pending_at_done=0 post_done_accepts=0
+RTL_ACTIVATION 9 signed_extremes_poisoned_padding PASS accepted=24/24 output=6/6 status=0,0,0 pending_at_done=0 post_done_accepts=0
+RTL_ACTIVATION 10 multiple_compute_changed_every_field PASS accepted=132/132 output=17/17 status=0,0,0 pending_at_done=0 post_done_accepts=0
+RTL_ACTIVATION 11 end_only_ignored_invalid_fields PASS accepted=4/4 output=0/0 status=0,0,0 pending_at_done=0 post_done_accepts=0
+RTL_ACTIVATION 12 end_only_leaves_queued_input PASS accepted=4/4 output=0/0 status=0,0,0 pending_at_done=1 post_done_accepts=0
+RTL_ACTIVATION 13 header_early_beat0 PASS accepted=1/1 output=0/0 status=1,1,2415919104 pending_at_done=1 post_done_accepts=0
+RTL_ACTIVATION 14 recovery_after_header_early_beat0 PASS accepted=12/12 output=3/3 status=0,0,0 pending_at_done=0 post_done_accepts=0
+RTL_ACTIVATION 15 header_early_beat1 PASS accepted=2/2 output=0/0 status=1,1,2415919105 pending_at_done=1 post_done_accepts=0
+RTL_ACTIVATION 16 recovery_after_header_early_beat1 PASS accepted=40/40 output=4/4 status=0,0,0 pending_at_done=0 post_done_accepts=0
+RTL_ACTIVATION 17 header_early_beat2 PASS accepted=3/3 output=0/0 status=1,1,2415919106 pending_at_done=1 post_done_accepts=0
+RTL_ACTIVATION 18 recovery_after_header_early_beat2 PASS accepted=12/12 output=3/3 status=0,0,0 pending_at_done=0 post_done_accepts=0
+RTL_ACTIVATION 19 header_missing_final_tlast PASS accepted=4/4 output=0/0 status=1,1,2415919107 pending_at_done=1 post_done_accepts=0
+RTL_ACTIVATION 20 recovery_after_header_missing_final_tlast PASS accepted=40/40 output=4/4 status=0,0,0 pending_at_done=0 post_done_accepts=0
+RTL_ACTIVATION 21 end_header_early PASS accepted=2/2 output=0/0 status=1,1,2415919108 pending_at_done=1 post_done_accepts=0
+RTL_ACTIVATION 22 recovery_after_end_header_early PASS accepted=12/12 output=3/3 status=0,0,0 pending_at_done=0 post_done_accepts=0
+RTL_ACTIVATION 23 end_header_missing PASS accepted=4/4 output=0/0 status=1,1,2415919109 pending_at_done=1 post_done_accepts=0
+RTL_ACTIVATION 24 recovery_after_end_header_missing PASS accepted=40/40 output=4/4 status=0,0,0 pending_at_done=0 post_done_accepts=0
+RTL_ACTIVATION 25 unknown_opcode_2 PASS accepted=4/4 output=0/0 status=1,2,2432696326 pending_at_done=1 post_done_accepts=0
+RTL_ACTIVATION 26 recovery_after_unknown_opcode_2 PASS accepted=12/12 output=3/3 status=0,0,0 pending_at_done=0 post_done_accepts=0
+RTL_ACTIVATION 27 unknown_opcode_ffffffff PASS accepted=4/4 output=0/0 status=1,2,2432696327 pending_at_done=1 post_done_accepts=0
+RTL_ACTIVATION 28 recovery_after_unknown_opcode_ffffffff PASS accepted=40/40 output=4/4 status=0,0,0 pending_at_done=0 post_done_accepts=0
+RTL_ACTIVATION 29 unknown_opcode_10001 PASS accepted=4/4 output=0/0 status=1,2,2432696328 pending_at_done=1 post_done_accepts=0
+RTL_ACTIVATION 30 recovery_after_unknown_opcode_10001 PASS accepted=12/12 output=3/3 status=0,0,0 pending_at_done=0 post_done_accepts=0
+RTL_ACTIVATION 31 invalid_h_zero PASS accepted=4/4 output=0/0 status=1,3,2449473536 pending_at_done=1 post_done_accepts=0
+RTL_ACTIVATION 32 recovery_after_invalid_h_zero PASS accepted=40/40 output=4/4 status=0,0,0 pending_at_done=0 post_done_accepts=0
+RTL_ACTIVATION 33 invalid_h_one PASS accepted=4/4 output=0/0 status=1,3,2449473537 pending_at_done=1 post_done_accepts=0
+RTL_ACTIVATION 34 recovery_after_invalid_h_one PASS accepted=12/12 output=3/3 status=0,0,0 pending_at_done=0 post_done_accepts=0
+RTL_ACTIVATION 35 invalid_h_65 PASS accepted=4/4 output=0/0 status=1,3,2449473538 pending_at_done=1 post_done_accepts=0
+RTL_ACTIVATION 36 recovery_after_invalid_h_65 PASS accepted=40/40 output=4/4 status=0,0,0 pending_at_done=0 post_done_accepts=0
+RTL_ACTIVATION 37 invalid_h_max_u16 PASS accepted=4/4 output=0/0 status=1,3,2449473539 pending_at_done=1 post_done_accepts=0
+RTL_ACTIVATION 38 recovery_after_invalid_h_max_u16 PASS accepted=12/12 output=3/3 status=0,0,0 pending_at_done=0 post_done_accepts=0
+RTL_ACTIVATION 39 invalid_w_zero PASS accepted=4/4 output=0/0 status=1,3,2449473540 pending_at_done=1 post_done_accepts=0
+RTL_ACTIVATION 40 recovery_after_invalid_w_zero PASS accepted=40/40 output=4/4 status=0,0,0 pending_at_done=0 post_done_accepts=0
+RTL_ACTIVATION 41 invalid_w_one PASS accepted=4/4 output=0/0 status=1,3,2449473541 pending_at_done=1 post_done_accepts=0
+RTL_ACTIVATION 42 recovery_after_invalid_w_one PASS accepted=12/12 output=3/3 status=0,0,0 pending_at_done=0 post_done_accepts=0
+RTL_ACTIVATION 43 invalid_w_65 PASS accepted=4/4 output=0/0 status=1,3,2449473542 pending_at_done=1 post_done_accepts=0
+RTL_ACTIVATION 44 recovery_after_invalid_w_65 PASS accepted=40/40 output=4/4 status=0,0,0 pending_at_done=0 post_done_accepts=0
+RTL_ACTIVATION 45 invalid_w_max_u16 PASS accepted=4/4 output=0/0 status=1,3,2449473543 pending_at_done=1 post_done_accepts=0
+RTL_ACTIVATION 46 recovery_after_invalid_w_max_u16 PASS accepted=12/12 output=3/3 status=0,0,0 pending_at_done=0 post_done_accepts=0
+RTL_ACTIVATION 47 invalid_k_zero PASS accepted=4/4 output=0/0 status=1,3,2449473544 pending_at_done=1 post_done_accepts=0
+RTL_ACTIVATION 48 recovery_after_invalid_k_zero PASS accepted=40/40 output=4/4 status=0,0,0 pending_at_done=0 post_done_accepts=0
+RTL_ACTIVATION 49 invalid_k_one PASS accepted=4/4 output=0/0 status=1,3,2449473545 pending_at_done=1 post_done_accepts=0
+RTL_ACTIVATION 50 recovery_after_invalid_k_one PASS accepted=12/12 output=3/3 status=0,0,0 pending_at_done=0 post_done_accepts=0
+RTL_ACTIVATION 51 invalid_k_three PASS accepted=4/4 output=0/0 status=1,3,2449473546 pending_at_done=1 post_done_accepts=0
+RTL_ACTIVATION 52 recovery_after_invalid_k_three PASS accepted=40/40 output=4/4 status=0,0,0 pending_at_done=0 post_done_accepts=0
+RTL_ACTIVATION 53 invalid_k_five PASS accepted=4/4 output=0/0 status=1,3,2449473547 pending_at_done=1 post_done_accepts=0
+RTL_ACTIVATION 54 recovery_after_invalid_k_five PASS accepted=12/12 output=3/3 status=0,0,0 pending_at_done=0 post_done_accepts=0
+RTL_ACTIVATION 55 invalid_k_max_u32 PASS accepted=4/4 output=0/0 status=1,3,2449473548 pending_at_done=1 post_done_accepts=0
+RTL_ACTIVATION 56 recovery_after_invalid_k_max_u32 PASS accepted=40/40 output=4/4 status=0,0,0 pending_at_done=0 post_done_accepts=0
+RTL_ACTIVATION 57 invalid_k_large_low_bits_valid PASS accepted=4/4 output=0/0 status=1,3,2449473549 pending_at_done=1 post_done_accepts=0
+RTL_ACTIVATION 58 recovery_after_invalid_k_large_low_bits_valid PASS accepted=12/12 output=3/3 status=0,0,0 pending_at_done=0 post_done_accepts=0
+RTL_ACTIVATION 59 invalid_k_exceeds_h PASS accepted=4/4 output=0/0 status=1,3,2449473550 pending_at_done=1 post_done_accepts=0
+RTL_ACTIVATION 60 recovery_after_invalid_k_exceeds_h PASS accepted=40/40 output=4/4 status=0,0,0 pending_at_done=0 post_done_accepts=0
+RTL_ACTIVATION 61 invalid_k_exceeds_w PASS accepted=4/4 output=0/0 status=1,3,2449473551 pending_at_done=1 post_done_accepts=0
+RTL_ACTIVATION 62 recovery_after_invalid_k_exceeds_w PASS accepted=12/12 output=3/3 status=0,0,0 pending_at_done=0 post_done_accepts=0
+RTL_ACTIVATION 63 invalid_h_not_divisible_k4 PASS accepted=4/4 output=0/0 status=1,3,2449473552 pending_at_done=1 post_done_accepts=0
+RTL_ACTIVATION 64 recovery_after_invalid_h_not_divisible_k4 PASS accepted=40/40 output=4/4 status=0,0,0 pending_at_done=0 post_done_accepts=0
+RTL_ACTIVATION 65 invalid_w_not_divisible_k4 PASS accepted=4/4 output=0/0 status=1,3,2449473553 pending_at_done=1 post_done_accepts=0
+RTL_ACTIVATION 66 recovery_after_invalid_w_not_divisible_k4 PASS accepted=12/12 output=3/3 status=0,0,0 pending_at_done=0 post_done_accepts=0
+RTL_ACTIVATION 67 invalid_h_not_divisible_k2 PASS accepted=4/4 output=0/0 status=1,3,2449473554 pending_at_done=1 post_done_accepts=0
+RTL_ACTIVATION 68 recovery_after_invalid_h_not_divisible_k2 PASS accepted=40/40 output=4/4 status=0,0,0 pending_at_done=0 post_done_accepts=0
+RTL_ACTIVATION 69 invalid_w_not_divisible_k2 PASS accepted=4/4 output=0/0 status=1,3,2449473555 pending_at_done=1 post_done_accepts=0
+RTL_ACTIVATION 70 recovery_after_invalid_w_not_divisible_k2 PASS accepted=12/12 output=3/3 status=0,0,0 pending_at_done=0 post_done_accepts=0
+RTL_ACTIVATION 71 payload_early_beat0 PASS accepted=5/5 output=0/0 status=1,4,2466250752 pending_at_done=1 post_done_accepts=0
+RTL_ACTIVATION 72 recovery_after_payload_early_beat0 PASS accepted=40/40 output=4/4 status=0,0,0 pending_at_done=0 post_done_accepts=0
+RTL_ACTIVATION 73 payload_early_beat7 PASS accepted=12/12 output=0/0 status=1,4,2466250759 pending_at_done=1 post_done_accepts=0
+RTL_ACTIVATION 74 recovery_after_payload_early_beat7 PASS accepted=12/12 output=3/3 status=0,0,0 pending_at_done=0 post_done_accepts=0
+RTL_ACTIVATION 75 payload_early_beat14 PASS accepted=19/19 output=0/0 status=1,4,2466250766 pending_at_done=1 post_done_accepts=0
+RTL_ACTIVATION 76 recovery_after_payload_early_beat14 PASS accepted=40/40 output=4/4 status=0,0,0 pending_at_done=0 post_done_accepts=0
+RTL_ACTIVATION 77 payload_missing_final_tlast PASS accepted=20/20 output=0/0 status=1,5,2466250768 pending_at_done=1 post_done_accepts=0
+RTL_ACTIVATION 78 recovery_after_payload_missing_final_tlast PASS accepted=12/12 output=3/3 status=0,0,0 pending_at_done=0 post_done_accepts=0
+RTL_ACTIVATION 79 precedence_early_header_over_unknown_invalid PASS accepted=2/2 output=0/0 status=1,1,2483027968 pending_at_done=1 post_done_accepts=0
+RTL_ACTIVATION 80 recovery_after_precedence_early_header_over_unknown_invalid PASS accepted=40/40 output=4/4 status=0,0,0 pending_at_done=0 post_done_accepts=0
+RTL_ACTIVATION 81 precedence_missing_header_over_unknown_invalid PASS accepted=4/4 output=0/0 status=1,1,2483027969 pending_at_done=1 post_done_accepts=0
+RTL_ACTIVATION 82 recovery_after_precedence_missing_header_over_unknown_invalid PASS accepted=12/12 output=3/3 status=0,0,0 pending_at_done=0 post_done_accepts=0
+RTL_ACTIVATION 83 precedence_unknown_over_invalid PASS accepted=4/4 output=0/0 status=1,2,2483027970 pending_at_done=1 post_done_accepts=0
+RTL_ACTIVATION 84 recovery_after_precedence_unknown_over_invalid PASS accepted=40/40 output=4/4 status=0,0,0 pending_at_done=0 post_done_accepts=0
+RTL_ACTIVATION 85 precedence_invalid_over_early_payload PASS accepted=4/4 output=0/0 status=1,3,2483027971 pending_at_done=1 post_done_accepts=0
+RTL_ACTIVATION 86 recovery_after_precedence_invalid_over_early_payload PASS accepted=12/12 output=3/3 status=0,0,0 pending_at_done=0 post_done_accepts=0
+RTL_ACTIVATION 87 precedence_early_payload_over_missing_final PASS accepted=7/7 output=0/0 status=1,4,2483027972 pending_at_done=1 post_done_accepts=0
+RTL_ACTIVATION 88 recovery_after_precedence_early_payload_over_missing_final PASS accepted=40/40 output=4/4 status=0,0,0 pending_at_done=0 post_done_accepts=0
+RTL_ACTIVATION 89 after_success_header_early_beat0 PASS accepted=21/21 output=6/6 status=1,1,2415919104 pending_at_done=1 post_done_accepts=0
+RTL_ACTIVATION 90 recovery_after_after_success_header_early_beat0 PASS accepted=12/12 output=3/3 status=0,0,0 pending_at_done=0 post_done_accepts=0
+RTL_ACTIVATION 91 after_success_unknown_opcode_2 PASS accepted=24/24 output=6/6 status=1,2,2432696326 pending_at_done=1 post_done_accepts=0
+RTL_ACTIVATION 92 recovery_after_after_success_unknown_opcode_2 PASS accepted=40/40 output=4/4 status=0,0,0 pending_at_done=0 post_done_accepts=0
+RTL_ACTIVATION 93 after_success_invalid_h_zero PASS accepted=24/24 output=6/6 status=1,3,2449473536 pending_at_done=1 post_done_accepts=0
+RTL_ACTIVATION 94 recovery_after_after_success_invalid_h_zero PASS accepted=12/12 output=3/3 status=0,0,0 pending_at_done=0 post_done_accepts=0
+RTL_ACTIVATION 95 after_success_payload_early_beat0 PASS accepted=25/25 output=6/6 status=1,4,2466250752 pending_at_done=1 post_done_accepts=0
+RTL_ACTIVATION 96 recovery_after_after_success_payload_early_beat0 PASS accepted=40/40 output=4/4 status=0,0,0 pending_at_done=0 post_done_accepts=0
+RTL_ACTIVATION 97 after_success_payload_missing_final_tlast PASS accepted=40/40 output=6/6 status=1,5,2466250768 pending_at_done=1 post_done_accepts=0
+RTL_ACTIVATION 98 recovery_after_after_success_payload_missing_final_tlast PASS accepted=12/12 output=3/3 status=0,0,0 pending_at_done=0 post_done_accepts=0
+RTL_ALL_ACTIVATIONS 99 FAILURES 0
+$finish called at time : 161920 ns : File "/home/js12359/hwdesign-work/cmdresp/takehome/evidence/rtl_stream_001/sources/rtl_stream_tb.sv" Line 234
+exit
+INFO: xsimkernel Simulation Memory Usage: 518776 KB (Peak: 567596 KB), Simulation CPU Usage: 2070 ms
+INFO: [Common 17-206] Exiting xsim at Wed Nov  4 21:48:54 2026...
